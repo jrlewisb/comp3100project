@@ -11,11 +11,21 @@ public class Server implements Comparable<Server>
     public int runningJobs;
     public Server(String s)
     {
-
+        String[] arr = s.split(" ");
+        type = arr[0];
+        id = Integer.valueOf(arr[1]);
+        state = arr[2];
+        curStartTime = Integer.valueOf(arr[3]);
+        cores = Integer.valueOf(arr[4]);
+        memory = Integer.valueOf(arr[5]);
+        disk = Integer.valueOf(arr[6]);
+        waitingJobs = Integer.valueOf(arr[7]);
+        runningJobs = Integer.valueOf(arr[8]);
     }
 
     private int typeAsInt(String type)
     {
+        System.out.println(type);
         switch(type)
         {
             case "xlarge": return 5;
@@ -24,6 +34,7 @@ public class Server implements Comparable<Server>
             case "small": return 2;
             case "micro": return 1;
         }
+        return -1;
     }
 
     @Override

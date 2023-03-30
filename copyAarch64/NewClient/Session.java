@@ -1,11 +1,18 @@
+import java.io.*;
+import java.net.*;
+import java.util.Vector;
+import java.util.Arrays;
+
 public class Session
 {
     BufferedReader in;
     DataOutputStream out;
+    Socket sock;
     public Session(Socket sock)
     {
         try
         {
+            this.sock = sock;
             in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
             out = new DataOutputStream(sock.getOutputStream());
         }catch(Exception e){System.out.println(e);}
@@ -16,32 +23,32 @@ public class Session
         System.out.println(s);
     }
 
-    public void writeln(String s)
+    public void writeln(String s) throws Exception
     {
         print("CLIENT SEND: " + s);
         out.write(s.concat("\n").getBytes());
         out.flush();
     }
 
-    boolean responseEqual(String s)
+    boolean responseEqual(String s) throws Exception
     {
         return s.equals(in.readLine());
     }
 
-    compareAndReturn(String s)
+    String compareAndReturn(String s) throws Exception
     {
         String res = in.readLine();
         if(s.equals(res))
         {
             return res;
         }else{
-            throw new Exception;
+            throw new Exception();
         }
     }
 
     
 
-    public boolean makeConnection()
+    public boolean makeConnection() 
     {
         try
         {
@@ -55,35 +62,49 @@ public class Session
                 }
             }
             return false;
-        }catch(Exception e){print(e);}
+        }catch(Exception e){
+            print(e.toString());
+            return false;
+            }
     }
 
-    public boolean 
-
-    public void sendSCHD(Job job, Server server)
+    public void sendSCHD(Job job, Server server) throws Exception
     {
         writeln("SCHD " + job.id + " " + server.type + " " + server.id);
     }
 
-    public String[] handleData(String header)
+    public String[] handleData(String header) throws Exception
     {
+        print("HEADER RCVD: " + header);
         String[] headerData = header.split(" ");
-        int lines = Integer.valueOf(headerData[0]);
-        int bytes = Integer.valueOf(headerData[1]);
+        if(!headerData[0].equals("DATA")){
+            throw new Exception();
+        }
+        int amtLines = Integer.valueOf(headerData[1]);
+        int amtBytes = Integer.valueOf(headerData[2]);
         //prepare to read
         writeln("OK");
-        String[] lines = new String[lines];
-        for(int i = 0; i < lines; i++)
+        String[] lines = new String[amtLines];
+        for(int i = 0; i < amtLines; i++)
         {
             lines[i] = in.readLine();
         }
         //after all data recieved
         writeln("OK");
+        for(String l : lines){
+            print(l);
+        }
+        return lines;
     }
 
-    public void handleJOBN(Event e)
+    public void handleJOBN(EventData e) throws Exception
     {
         Job job = new Job(e.tokens);
+        print(job.type);
+        for(String s : e.tokens){
+            System.out.print(s + " ,");
+        }
+        print("\n");
         writeln("GETS Capable " + job.requirements());
         String[] serversRaw = handleData(in.readLine());
         if(responseEqual("."))
@@ -91,37 +112,44 @@ public class Session
             Server[] servers = new Server[serversRaw.length];
             for(int i = 0; i < serversRaw.length; i++)
             {
+                print(serversRaw[i]);
                 servers[i] = new Server(serversRaw[i]);
             }
             Arrays.sort(servers);
-            sendSCHD(job, server);
+            sendSCHD(job, servers[0]);
+            
 
         }
+        if(!in.readLine().equals("OK")){throw new Exception();}
 
     }
 
-    handleJCPL(Event e)
+    void handleJCPL(EventData e) throws Exception
     {
         //job completion
         //should just continue?
+        writeln("OK");
+        return;
     }
 
-    public void handleEvent(String s)
+    public void handleEvent(String s) throws Exception
     {
-        Event e = new Event(s);
+        EventData e = new EventData(s);
+        print(e.type);
         switch(e.type)
         {
             case "JOBN": handleJOBN(e); break;
-            case "JOBP": //handleJOBP(e); break;
+            case "JOBP": break; //handleJOBP(e); break;
             case "JCPL": handleJCPL(e); break;
             case "RESF": //handleRESF(e); break;
             case "RESR": //handleRESR(e); break;
             case "CHKQ": //handleCHKQ(e); break;
             case "NONE": //not needed
         }
+        writeln("REDY");
     }
 
-    public void start()
+    public void start() throws Exception
     {
         if(makeConnection() == true) //if successful connection
         {
@@ -129,12 +157,13 @@ public class Session
             String event;
             while(!(event = in.readLine()).equals("NONE"))
             {
+                print(event);
                 handleEvent(event);
             }
             writeln("QUIT");
             out.close();
             if(responseEqual("QUIT")){ in.close(); }
-            socket.close();
+            sock.close();
         }
     }
 }
