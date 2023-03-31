@@ -1,5 +1,6 @@
 import java.io.*;
 import java.net.*;
+import java.lang.Math.*;
 import java.util.Vector;
 import java.util.Arrays;
 
@@ -8,6 +9,8 @@ public class Session
     BufferedReader in;
     DataOutputStream out;
     Socket sock;
+    Server[] sortedServers;
+    int robinNumber = 0;
     public Session(Socket sock)
     {
         try
@@ -55,7 +58,7 @@ public class Session
             writeln("HELO");
             if(responseEqual("OK"))
             {
-                writeln("AUTH xxx");
+                writeln("AUTH josh");
                 if(responseEqual("OK"))
                 {
                     return true;
@@ -108,36 +111,89 @@ public class Session
         print("\n");
         writeln("GETS Capable " + job.requirements());
         String[] serversRaw = handleData(in.readLine());
+        if(this.sortedServers == null)
+        {
+            sortServers(serversRaw);
+        }
         if(responseEqual("."))
         {
             Server[] servers = new Server[serversRaw.length];
             print("RAW SERVERS");
             for(int i = 0; i < serversRaw.length; i++)
             {   
-                print(serversRaw[i]);
                 servers[i] = new Server(serversRaw[i]);
             }
-            // int minRunning = Integer.Max();
-            // Server mostSuitable;
-            // for(int i = 0; i < serversRaw.length - 1; i++)
-            // {
-            //     minRunning = min(servers[0].runningJobs, minRunning)
-            //     if(servers[i].runningJobs
-            // }
-            Arrays.sort(servers);
-            print("SORTED SERVERS:");
-            for(int i = 0; i < servers.length; i++)
-            {
-                System.out.println(servers[i].type);
+
+            String largestType = this.sortedServers[0].type;
+            print(largestType);
+
+            Vector<Server> serversOfLargestType = new Vector<Server>();
+            int minTotalJobs = Integer.MAX_VALUE;
+
+            for(Server s : servers){
+                if(s.type.equals(largestType)){
+                    // if(s.cores == 0){
+                    //     continue;
+                    // }
+                    serversOfLargestType.add(s);
+                    minTotalJobs = Math.min(s.waitingJobs + s.runningJobs, minTotalJobs);
+                } 
             }
 
-            print("SCHEDULING CHOICE MADE FOR: " + job.id + " TO SERVER: " + servers[0]);
-            sendSCHD(job, servers[0]);
+            robinNumber %= serversOfLargestType.size();
+            // while(serversOfLargestType.get(robinNumber).cores > -10)
+            // {
+            //     robinNumber += 1;
+            //     robinNumber %= serversOfLargestType.size();
+            // }
+            sendSCHD(job, serversOfLargestType.get(robinNumber));
+            robinNumber+=1;
+
+
+            // int minId = Integer.MAX_VALUE;
+            // Vector<Server> largestWithMinTotalJobs = new Vector<Server>();
+
+            // for(Server s : serversOfLargestType){
+            //     if(s.runningJobs + s.waitingJobs == (minTotalJobs)){
+            //         // if(s.cores == 0){
+            //         //     continue;
+            //         // }
+            //         largestWithMinTotalJobs.add(s);
+            //         minId = Math.min(s.id, minId);
+            //     } 
+            // }
+            
+ 
+            // for(Server s : largestWithMinTotalJobs)
+            // {
+            //     if(s.id == minId){
+            //         print("SCHEDULING CHOICE MADE FOR: " + job.id + " TO SERVER: " + s);
+            //         sendSCHD(job, s);
+            //         break;
+            //     }
+                
+            // }
+
+
             
 
         }
         if(!in.readLine().equals("OK")){throw new Exception();}
 
+    }
+
+    void sortServers(String[] rawServers)
+    {
+        Server[] servers = new Server[rawServers.length];
+
+            for(int i = 0; i < rawServers.length; i++)
+            {   
+                servers[i] = new Server(rawServers[i]);
+            }
+
+            Arrays.sort(servers);
+            this.sortedServers = servers;
+            //end sort servers
     }
 
     void handleJCPL(EventData e) throws Exception

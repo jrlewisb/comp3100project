@@ -38,9 +38,18 @@ public class Server implements Comparable<Server>
         if(comparison > 0){ return -1; }
         if(comparison < 0){ return 1; }
 
-        if(this.state.equals("active")){
-            return -1;
-        }
+        // comparison = this.memory - other.memory;
+
+        // if(comparison > 0){ return -1; }
+        // if(comparison < 0){ return 1; }
+
+        // comparison = this.disk - other.disk;
+
+        // if(comparison > 0){ return -1; }
+        // if(comparison < 0){ return 1; }
+
+
+        // if(this.id > other.id){return 1;}else{return -1;}
         /* THIS IS TOO SMART FOR NOW
         comparison = this.waitingJobs - other.waitingJobs;
         if(comparison < 0){ return -1; }
