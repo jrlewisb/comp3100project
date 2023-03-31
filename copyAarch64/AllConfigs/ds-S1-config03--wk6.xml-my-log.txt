@@ -1,0 +1,1779 @@
+# ds-sim server 28-Feb, 2023 @ MQ - client-server
+# Server-side simulator started with './ds-server -c ./S1testConfigs/ds-S1-config03--wk6.xml -v all -n'
+# Waiting for connection to port 50000 of IP address 127.0.0.1
+RCVD HELO
+SENT OK
+RCVD AUTH xxx
+# Welcome  xxx!
+# The system information can be read from 'ds-system.xml'
+SENT OK
+RCVD REDY
+SENT JOBN 37 0 1621 3 700 3800
+RCVD GETS Capable 3 700 3800
+SENT DATA 16 124
+RCVD OK
+SENT medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 inactive -1 8 16000 128000 0 0
+large 1 inactive -1 8 16000 128000 0 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 inactive -1 16 32000 256000 0 0
+super 1 inactive -1 16 32000 256000 0 0
+ultrasuper 0 inactive -1 16 64000 512000 0 0
+ultrasuper 1 inactive -1 16 64000 512000 0 0
+RCVD OK
+SENT .
+RCVD SCHD 0 super 0
+t:         37 job     0 (waiting) on # 0 of server super (booting) SCHEDULED
+SENT OK
+RCVD REDY
+SENT JOBN 60 1 521 2 1500 2900
+RCVD GETS Capable 2 1500 2900
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 inactive -1 8 16000 128000 0 0
+large 1 inactive -1 8 16000 128000 0 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 booting 127 13 31300 252200 1 0
+super 1 inactive -1 16 32000 256000 0 0
+ultrasuper 0 inactive -1 16 64000 512000 0 0
+ultrasuper 1 inactive -1 16 64000 512000 0 0
+RCVD OK
+SENT .
+RCVD SCHD 1 super 1
+t:         60 job     1 (waiting) on # 1 of server super (booting) SCHEDULED
+SENT OK
+RCVD REDY
+SENT JOBN 76 2 877 2 1500 2100
+RCVD GETS Capable 2 1500 2100
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 inactive -1 8 16000 128000 0 0
+large 1 inactive -1 8 16000 128000 0 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 booting 127 13 31300 252200 1 0
+super 1 booting 150 14 30500 253100 1 0
+ultrasuper 0 inactive -1 16 64000 512000 0 0
+ultrasuper 1 inactive -1 16 64000 512000 0 0
+RCVD OK
+SENT .
+RCVD SCHD 2 ultrasuper 0
+t:         76 job     2 (waiting) on # 0 of server ultrasuper (booting) SCHEDULED
+SENT OK
+RCVD REDY
+SENT JOBN 111 3 53 4 1800 5100
+RCVD GETS Capable 4 1800 5100
+SENT DATA 16 124
+RCVD OK
+SENT medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 inactive -1 8 16000 128000 0 0
+large 1 inactive -1 8 16000 128000 0 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 booting 127 13 31300 252200 1 0
+super 1 booting 150 14 30500 253100 1 0
+ultrasuper 0 booting 166 14 62500 509900 1 0
+ultrasuper 1 inactive -1 16 64000 512000 0 0
+RCVD OK
+SENT .
+RCVD SCHD 3 ultrasuper 1
+t:        111 job     3 (waiting) on # 1 of server ultrasuper (booting) SCHEDULED
+SENT OK
+RCVD REDY
+t:        127 job     0 on # 0 of server super RUNNING
+SENT JOBN 147 4 95 1 100 2000
+RCVD GETS Capable 1 100 2000
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 inactive -1 8 16000 128000 0 0
+large 1 inactive -1 8 16000 128000 0 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 active 127 13 31300 252200 0 1
+super 1 booting 150 14 30500 253100 1 0
+ultrasuper 0 booting 166 14 62500 509900 1 0
+ultrasuper 1 booting 201 12 62200 506900 1 0
+RCVD OK
+SENT .
+RCVD SCHD 4 super 1
+t:        147 job     4 (waiting) on # 1 of server super (booting) SCHEDULED
+SENT OK
+RCVD REDY
+t:        150 job     1 on # 1 of server super RUNNING
+t:        150 job     4 on # 1 of server super RUNNING
+t:        166 job     2 on # 0 of server ultrasuper RUNNING
+SENT JOBN 186 5 260 3 2700 2600
+RCVD GETS Capable 3 2700 2600
+SENT DATA 16 124
+RCVD OK
+SENT medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 inactive -1 8 16000 128000 0 0
+large 1 inactive -1 8 16000 128000 0 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 active 127 13 31300 252200 0 1
+super 1 active 150 13 30400 251100 0 2
+ultrasuper 0 active 166 14 62500 509900 0 1
+ultrasuper 1 booting 201 12 62200 506900 1 0
+RCVD OK
+SENT .
+RCVD SCHD 5 ultrasuper 0
+t:        186 job     5 (running) on # 0 of server ultrasuper (active) SCHEDULED
+t:        186 job     5 on # 0 of server ultrasuper RUNNING
+SENT OK
+RCVD REDY
+t:        201 job     3 on # 1 of server ultrasuper RUNNING
+SENT JOBN 228 6 5774 4 4000 7600
+RCVD GETS Capable 4 4000 7600
+SENT DATA 16 124
+RCVD OK
+SENT medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 inactive -1 8 16000 128000 0 0
+large 1 inactive -1 8 16000 128000 0 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 active 127 13 31300 252200 0 1
+super 1 active 150 13 30400 251100 0 2
+ultrasuper 0 active 166 11 59800 507300 0 2
+ultrasuper 1 active 201 12 62200 506900 0 1
+RCVD OK
+SENT .
+RCVD SCHD 6 super 1
+t:        228 job     6 (running) on # 1 of server super (active) SCHEDULED
+t:        228 job     6 on # 1 of server super RUNNING
+SENT OK
+RCVD REDY
+SENT JOBN 255 7 911 2 500 2100
+RCVD GETS Capable 2 500 2100
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 inactive -1 8 16000 128000 0 0
+large 1 inactive -1 8 16000 128000 0 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 active 127 13 31300 252200 0 1
+super 1 active 150 9 26400 243500 0 3
+ultrasuper 0 active 166 11 59800 507300 0 2
+ultrasuper 1 active 201 12 62200 506900 0 1
+RCVD OK
+SENT .
+RCVD SCHD 7 super 0
+t:        255 job     7 (running) on # 0 of server super (active) SCHEDULED
+t:        255 job     7 on # 0 of server super RUNNING
+SENT OK
+RCVD REDY
+SENT JOBN 279 8 1006 1 100 800
+RCVD GETS Capable 1 100 800
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 inactive -1 8 16000 128000 0 0
+large 1 inactive -1 8 16000 128000 0 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 active 127 11 30800 250100 0 2
+super 1 active 150 9 26400 243500 0 3
+ultrasuper 0 active 166 11 59800 507300 0 2
+ultrasuper 1 active 201 12 62200 506900 0 1
+RCVD OK
+SENT .
+RCVD SCHD 8 ultrasuper 1
+t:        279 job     8 (running) on # 1 of server ultrasuper (active) SCHEDULED
+t:        279 job     8 on # 1 of server ultrasuper RUNNING
+SENT OK
+RCVD REDY
+SENT JOBN 284 9 362 2 600 1500
+RCVD GETS Capable 2 600 1500
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 inactive -1 8 16000 128000 0 0
+large 1 inactive -1 8 16000 128000 0 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 active 127 11 30800 250100 0 2
+super 1 active 150 9 26400 243500 0 3
+ultrasuper 0 active 166 11 59800 507300 0 2
+ultrasuper 1 active 201 11 62100 506100 0 2
+RCVD OK
+SENT .
+RCVD SCHD 9 ultrasuper 1
+t:        284 job     9 (running) on # 1 of server ultrasuper (active) SCHEDULED
+t:        284 job     9 on # 1 of server ultrasuper RUNNING
+SENT OK
+RCVD REDY
+SENT JOBN 286 10 231 1 100 1600
+RCVD GETS Capable 1 100 1600
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 inactive -1 8 16000 128000 0 0
+large 1 inactive -1 8 16000 128000 0 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 active 127 11 30800 250100 0 2
+super 1 active 150 9 26400 243500 0 3
+ultrasuper 0 active 166 11 59800 507300 0 2
+ultrasuper 1 active 201 9 61500 504600 0 3
+RCVD OK
+SENT .
+RCVD SCHD 10 ultrasuper 0
+t:        286 job    10 (running) on # 0 of server ultrasuper (active) SCHEDULED
+t:        286 job    10 on # 0 of server ultrasuper RUNNING
+SENT OK
+RCVD REDY
+SENT JOBN 298 11 29 1 500 600
+RCVD GETS Capable 1 500 600
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 inactive -1 8 16000 128000 0 0
+large 1 inactive -1 8 16000 128000 0 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 active 127 11 30800 250100 0 2
+super 1 active 150 9 26400 243500 0 3
+ultrasuper 0 active 166 10 59700 505700 0 3
+ultrasuper 1 active 201 9 61500 504600 0 3
+RCVD OK
+SENT .
+RCVD SCHD 11 super 0
+t:        298 job    11 (running) on # 0 of server super (active) SCHEDULED
+t:        298 job    11 on # 0 of server super RUNNING
+SENT OK
+RCVD REDY
+SENT JOBN 300 12 51 1 700 400
+RCVD GETS Capable 1 700 400
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 inactive -1 8 16000 128000 0 0
+large 1 inactive -1 8 16000 128000 0 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 active 127 10 30300 249500 0 3
+super 1 active 150 9 26400 243500 0 3
+ultrasuper 0 active 166 10 59700 505700 0 3
+ultrasuper 1 active 201 9 61500 504600 0 3
+RCVD OK
+SENT .
+RCVD SCHD 12 ultrasuper 0
+t:        300 job    12 (running) on # 0 of server ultrasuper (active) SCHEDULED
+t:        300 job    12 on # 0 of server ultrasuper RUNNING
+SENT OK
+RCVD REDY
+SENT JOBN 302 13 9 3 1900 500
+RCVD GETS Capable 3 1900 500
+SENT DATA 16 124
+RCVD OK
+SENT medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 inactive -1 8 16000 128000 0 0
+large 1 inactive -1 8 16000 128000 0 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 active 127 10 30300 249500 0 3
+super 1 active 150 9 26400 243500 0 3
+ultrasuper 0 active 166 9 59000 505300 0 4
+ultrasuper 1 active 201 9 61500 504600 0 3
+RCVD OK
+SENT .
+RCVD SCHD 13 super 0
+t:        302 job    13 (running) on # 0 of server super (active) SCHEDULED
+t:        302 job    13 on # 0 of server super RUNNING
+SENT OK
+RCVD REDY
+SENT JOBN 307 14 10 4 3500 3900
+RCVD GETS Capable 4 3500 3900
+SENT DATA 16 124
+RCVD OK
+SENT medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 inactive -1 8 16000 128000 0 0
+large 1 inactive -1 8 16000 128000 0 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 active 127 7 28400 249000 0 4
+super 1 active 150 9 26400 243500 0 3
+ultrasuper 0 active 166 9 59000 505300 0 4
+ultrasuper 1 active 201 9 61500 504600 0 3
+RCVD OK
+SENT .
+RCVD SCHD 14 ultrasuper 1
+t:        307 job    14 (running) on # 1 of server ultrasuper (active) SCHEDULED
+t:        307 job    14 on # 1 of server ultrasuper RUNNING
+SENT OK
+RCVD REDY
+SENT JOBN 310 15 207 2 2000 3500
+RCVD GETS Capable 2 2000 3500
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 inactive -1 8 16000 128000 0 0
+large 1 inactive -1 8 16000 128000 0 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 active 127 7 28400 249000 0 4
+super 1 active 150 9 26400 243500 0 3
+ultrasuper 0 active 166 9 59000 505300 0 4
+ultrasuper 1 active 201 5 58000 500700 0 4
+RCVD OK
+SENT .
+RCVD SCHD 15 ultrasuper 0
+t:        310 job    15 (running) on # 0 of server ultrasuper (active) SCHEDULED
+t:        310 job    15 on # 0 of server ultrasuper RUNNING
+SENT OK
+RCVD REDY
+t:        313 job     4 on # 1 of server super COMPLETED
+SENT JCPL 313 4 super 1
+RCVD REDY
+SENT JOBN 316 16 5237 2 1300 1200
+RCVD GETS Capable 2 1300 1200
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 inactive -1 8 16000 128000 0 0
+large 1 inactive -1 8 16000 128000 0 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 active 127 7 28400 249000 0 4
+super 1 active 150 10 26500 245500 0 2
+ultrasuper 0 active 166 7 57000 501800 0 5
+ultrasuper 1 active 201 5 58000 500700 0 4
+RCVD OK
+SENT .
+RCVD SCHD 16 super 1
+t:        316 job    16 (running) on # 1 of server super (active) SCHEDULED
+t:        316 job    16 on # 1 of server super RUNNING
+SENT OK
+RCVD REDY
+SENT JOBN 320 17 1382 6 5700 10900
+RCVD GETS Capable 6 5700 10900
+SENT DATA 8 124
+RCVD OK
+SENT large 0 inactive -1 8 16000 128000 0 0
+large 1 inactive -1 8 16000 128000 0 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 active 127 7 28400 249000 0 4
+super 1 active 150 8 25200 244300 0 3
+ultrasuper 0 active 166 7 57000 501800 0 5
+ultrasuper 1 active 201 5 58000 500700 0 4
+RCVD OK
+SENT .
+RCVD SCHD 17 super 1
+t:        320 job    17 (running) on # 1 of server super (active) SCHEDULED
+t:        320 job    17 on # 1 of server super RUNNING
+SENT OK
+RCVD REDY
+SENT JOBN 322 18 9 4 3200 6400
+RCVD GETS Capable 4 3200 6400
+SENT DATA 16 124
+RCVD OK
+SENT medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 inactive -1 8 16000 128000 0 0
+large 1 inactive -1 8 16000 128000 0 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 active 127 7 28400 249000 0 4
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 7 57000 501800 0 5
+ultrasuper 1 active 201 5 58000 500700 0 4
+RCVD OK
+SENT .
+RCVD SCHD 18 large 0
+t:        322 job    18 (waiting) on # 0 of server large (booting) SCHEDULED
+SENT OK
+RCVD REDY
+SENT JOBN 325 19 16 8 6000 4500
+RCVD GETS Capable 8 6000 4500
+SENT DATA 8 124
+RCVD OK
+SENT large 0 booting 352 4 12800 121600 1 0
+large 1 inactive -1 8 16000 128000 0 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 active 127 7 28400 249000 0 4
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 7 57000 501800 0 5
+ultrasuper 1 active 201 5 58000 500700 0 4
+RCVD OK
+SENT .
+RCVD SCHD 19 large 1
+t:        325 job    19 (waiting) on # 1 of server large (booting) SCHEDULED
+SENT OK
+RCVD REDY
+t:        329 job    11 on # 0 of server super COMPLETED
+SENT JCPL 329 11 super 0
+RCVD REDY
+SENT JOBN 329 20 104 7 7200 12000
+RCVD GETS Capable 7 7200 12000
+SENT DATA 8 124
+RCVD OK
+SENT large 0 booting 352 4 12800 121600 1 0
+large 1 booting 355 0 10000 123500 1 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 active 127 8 28900 249600 0 3
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 7 57000 501800 0 5
+ultrasuper 1 active 201 5 58000 500700 0 4
+RCVD OK
+SENT .
+RCVD SCHD 20 super 0
+t:        329 job    20 (running) on # 0 of server super (active) SCHEDULED
+t:        329 job    20 on # 0 of server super RUNNING
+SENT OK
+RCVD REDY
+SENT JOBN 332 21 95 3 500 2800
+RCVD GETS Capable 3 500 2800
+SENT DATA 16 124
+RCVD OK
+SENT medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 booting 352 4 12800 121600 1 0
+large 1 booting 355 0 10000 123500 1 0
+large 2 inactive -1 8 16000 128000 0 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 active 127 1 21700 237600 0 4
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 7 57000 501800 0 5
+ultrasuper 1 active 201 5 58000 500700 0 4
+RCVD OK
+SENT .
+RCVD SCHD 21 large 2
+t:        332 job    21 (waiting) on # 2 of server large (booting) SCHEDULED
+SENT OK
+RCVD REDY
+SENT JOBN 336 22 681 4 1100 900
+RCVD GETS Capable 4 1100 900
+SENT DATA 16 124
+RCVD OK
+SENT medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 booting 352 4 12800 121600 1 0
+large 1 booting 355 0 10000 123500 1 0
+large 2 booting 362 5 15500 125200 1 0
+large 3 inactive -1 8 16000 128000 0 0
+super 0 active 127 1 21700 237600 0 4
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 7 57000 501800 0 5
+ultrasuper 1 active 201 5 58000 500700 0 4
+RCVD OK
+SENT .
+RCVD SCHD 22 large 3
+t:        336 job    22 (waiting) on # 3 of server large (booting) SCHEDULED
+SENT OK
+RCVD REDY
+SENT JOBN 336 23 2330 2 500 1900
+RCVD GETS Capable 2 500 1900
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 booting 352 4 12800 121600 1 0
+large 1 booting 355 0 10000 123500 1 0
+large 2 booting 362 5 15500 125200 1 0
+large 3 booting 366 4 14900 127100 1 0
+super 0 active 127 1 21700 237600 0 4
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 7 57000 501800 0 5
+ultrasuper 1 active 201 5 58000 500700 0 4
+RCVD OK
+SENT .
+RCVD SCHD 23 ultrasuper 0
+t:        336 job    23 (running) on # 0 of server ultrasuper (active) SCHEDULED
+t:        336 job    23 on # 0 of server ultrasuper RUNNING
+SENT OK
+RCVD REDY
+SENT JOBN 340 24 587 15 13900 21200
+RCVD GETS Capable 15 13900 21200
+SENT DATA 4 124
+RCVD OK
+SENT super 0 active 127 1 21700 237600 0 4
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 5 56500 499900 0 6
+ultrasuper 1 active 201 5 58000 500700 0 4
+RCVD OK
+SENT .
+RCVD SCHD 24 ultrasuper 1
+t:        340 job    24 (waiting) on # 1 of server ultrasuper (active) SCHEDULED
+SENT OK
+RCVD REDY
+SENT JOBN 342 25 758 2 1500 3700
+RCVD GETS Capable 2 1500 3700
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 booting 352 4 12800 121600 1 0
+large 1 booting 355 0 10000 123500 1 0
+large 2 booting 362 5 15500 125200 1 0
+large 3 booting 366 4 14900 127100 1 0
+super 0 active 127 1 21700 237600 0 4
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 5 56500 499900 0 6
+ultrasuper 1 active 201 5 58000 500700 1 4
+RCVD OK
+SENT .
+RCVD SCHD 25 ultrasuper 1
+t:        342 job    25 (waiting) on # 1 of server ultrasuper (active) SCHEDULED
+SENT OK
+RCVD REDY
+SENT JOBN 346 26 6 12 23800 44300
+RCVD GETS Capable 12 23800 44300
+SENT DATA 4 124
+RCVD OK
+SENT super 0 active 127 1 21700 237600 0 4
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 5 56500 499900 0 6
+ultrasuper 1 active 201 5 58000 500700 2 4
+RCVD OK
+SENT .
+RCVD SCHD 26 ultrasuper 1
+t:        346 job    26 (waiting) on # 1 of server ultrasuper (active) SCHEDULED
+SENT OK
+RCVD REDY
+SENT JOBN 347 27 667 4 3300 2900
+RCVD GETS Capable 4 3300 2900
+SENT DATA 16 124
+RCVD OK
+SENT medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 booting 352 4 12800 121600 1 0
+large 1 booting 355 0 10000 123500 1 0
+large 2 booting 362 5 15500 125200 1 0
+large 3 booting 366 4 14900 127100 1 0
+super 0 active 127 1 21700 237600 0 4
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 5 56500 499900 0 6
+ultrasuper 1 active 201 5 58000 500700 3 4
+RCVD OK
+SENT .
+RCVD SCHD 27 ultrasuper 1
+t:        347 job    27 (waiting) on # 1 of server ultrasuper (active) SCHEDULED
+SENT OK
+RCVD REDY
+SENT JOBN 351 28 674 4 1300 2800
+RCVD GETS Capable 4 1300 2800
+SENT DATA 16 124
+RCVD OK
+SENT medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 booting 352 4 12800 121600 1 0
+large 1 booting 355 0 10000 123500 1 0
+large 2 booting 362 5 15500 125200 1 0
+large 3 booting 366 4 14900 127100 1 0
+super 0 active 127 1 21700 237600 0 4
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 5 56500 499900 0 6
+ultrasuper 1 active 201 5 58000 500700 4 4
+RCVD OK
+SENT .
+RCVD SCHD 28 ultrasuper 1
+t:        351 job    28 (waiting) on # 1 of server ultrasuper (active) SCHEDULED
+SENT OK
+RCVD REDY
+t:        352 job    18 on # 0 of server large RUNNING
+t:        355 job    19 on # 1 of server large RUNNING
+SENT JOBN 360 29 3 13 11900 50100
+RCVD GETS Capable 13 11900 50100
+SENT DATA 4 124
+RCVD OK
+SENT super 0 active 127 1 21700 237600 0 4
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 5 56500 499900 0 6
+ultrasuper 1 active 201 5 58000 500700 5 4
+RCVD OK
+SENT .
+RCVD SCHD 29 ultrasuper 1
+t:        360 job    29 (waiting) on # 1 of server ultrasuper (active) SCHEDULED
+SENT OK
+RCVD REDY
+t:        362 job    21 on # 2 of server large RUNNING
+SENT JOBN 362 30 798 12 1900 13400
+RCVD GETS Capable 12 1900 13400
+SENT DATA 4 124
+RCVD OK
+SENT super 0 active 127 1 21700 237600 0 4
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 5 56500 499900 0 6
+ultrasuper 1 active 201 5 58000 500700 6 4
+RCVD OK
+SENT .
+RCVD SCHD 30 ultrasuper 1
+t:        362 job    30 (waiting) on # 1 of server ultrasuper (active) SCHEDULED
+SENT OK
+RCVD REDY
+SENT JOBN 362 31 3294 7 3200 11600
+RCVD GETS Capable 7 3200 11600
+SENT DATA 8 124
+RCVD OK
+SENT large 0 active 352 4 12800 121600 0 1
+large 1 active 355 0 10000 123500 0 1
+large 2 active 362 5 15500 125200 0 1
+large 3 booting 366 4 14900 127100 1 0
+super 0 active 127 1 21700 237600 0 4
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 5 56500 499900 0 6
+ultrasuper 1 active 201 5 58000 500700 7 4
+RCVD OK
+SENT .
+RCVD SCHD 31 ultrasuper 1
+t:        362 job    31 (waiting) on # 1 of server ultrasuper (active) SCHEDULED
+SENT OK
+RCVD REDY
+t:        366 job    22 on # 3 of server large RUNNING
+SENT JOBN 393 32 1167 2 1000 3000
+RCVD GETS Capable 2 1000 3000
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 active 352 4 12800 121600 0 1
+large 1 active 355 0 10000 123500 0 1
+large 2 active 362 5 15500 125200 0 1
+large 3 active 366 4 14900 127100 0 1
+super 0 active 127 1 21700 237600 0 4
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 5 56500 499900 0 6
+ultrasuper 1 active 201 5 58000 500700 8 4
+RCVD OK
+SENT .
+RCVD SCHD 32 ultrasuper 1
+t:        393 job    32 (waiting) on # 1 of server ultrasuper (active) SCHEDULED
+SENT OK
+RCVD REDY
+SENT JOBN 394 33 431 1 1000 1600
+RCVD GETS Capable 1 1000 1600
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 active 352 4 12800 121600 0 1
+large 1 active 355 0 10000 123500 0 1
+large 2 active 362 5 15500 125200 0 1
+large 3 active 366 4 14900 127100 0 1
+super 0 active 127 1 21700 237600 0 4
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 5 56500 499900 0 6
+ultrasuper 1 active 201 5 58000 500700 9 4
+RCVD OK
+SENT .
+RCVD SCHD 33 ultrasuper 1
+t:        394 job    33 (waiting) on # 1 of server ultrasuper (active) SCHEDULED
+SENT OK
+RCVD REDY
+t:        398 job    12 on # 0 of server ultrasuper COMPLETED
+SENT JCPL 398 12 ultrasuper 0
+RCVD REDY
+t:        413 job    21 on # 2 of server large COMPLETED
+SENT JCPL 413 21 large 2
+RCVD REDY
+SENT JOBN 427 34 1944 1 700 100
+RCVD GETS Capable 1 700 100
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 active 352 4 12800 121600 0 1
+large 1 active 355 0 10000 123500 0 1
+large 2 idle 362 8 16000 128000 0 0
+large 3 active 366 4 14900 127100 0 1
+super 0 active 127 1 21700 237600 0 4
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 6 57200 500300 0 5
+ultrasuper 1 active 201 5 58000 500700 10 4
+RCVD OK
+SENT .
+RCVD SCHD 34 large 2
+t:        427 job    34 (running) on # 2 of server large (active) SCHEDULED
+t:        427 job    34 on # 2 of server large RUNNING
+SENT OK
+RCVD REDY
+SENT JOBN 434 35 217 1 700 900
+RCVD GETS Capable 1 700 900
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 active 352 4 12800 121600 0 1
+large 1 active 355 0 10000 123500 0 1
+large 2 active 362 7 15300 127900 0 1
+large 3 active 366 4 14900 127100 0 1
+super 0 active 127 1 21700 237600 0 4
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 6 57200 500300 0 5
+ultrasuper 1 active 201 5 58000 500700 10 4
+RCVD OK
+SENT .
+RCVD SCHD 35 large 2
+t:        434 job    35 (running) on # 2 of server large (active) SCHEDULED
+t:        434 job    35 on # 2 of server large RUNNING
+SENT OK
+RCVD REDY
+t:        452 job    10 on # 0 of server ultrasuper COMPLETED
+SENT JCPL 452 10 ultrasuper 0
+RCVD REDY
+t:        459 job     5 on # 0 of server ultrasuper COMPLETED
+SENT JCPL 459 5 ultrasuper 0
+RCVD REDY
+SENT JOBN 464 36 515 2 1600 3200
+RCVD GETS Capable 2 1600 3200
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 active 352 4 12800 121600 0 1
+large 1 active 355 0 10000 123500 0 1
+large 2 active 362 6 14600 127000 0 2
+large 3 active 366 4 14900 127100 0 1
+super 0 active 127 1 21700 237600 0 4
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 10 60000 504500 0 3
+ultrasuper 1 active 201 5 58000 500700 10 4
+RCVD OK
+SENT .
+RCVD SCHD 36 ultrasuper 0
+t:        464 job    36 (running) on # 0 of server ultrasuper (active) SCHEDULED
+t:        464 job    36 on # 0 of server ultrasuper RUNNING
+SENT OK
+RCVD REDY
+SENT JOBN 475 37 324 7 5600 3900
+RCVD GETS Capable 7 5600 3900
+SENT DATA 8 124
+RCVD OK
+SENT large 0 active 352 4 12800 121600 0 1
+large 1 active 355 0 10000 123500 0 1
+large 2 active 362 6 14600 127000 0 2
+large 3 active 366 4 14900 127100 0 1
+super 0 active 127 1 21700 237600 0 4
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 8 58400 501300 0 4
+ultrasuper 1 active 201 5 58000 500700 10 4
+RCVD OK
+SENT .
+RCVD SCHD 37 ultrasuper 0
+t:        475 job    37 (running) on # 0 of server ultrasuper (active) SCHEDULED
+t:        475 job    37 on # 0 of server ultrasuper RUNNING
+SENT OK
+RCVD REDY
+SENT JOBN 477 38 821 1 1000 200
+RCVD GETS Capable 1 1000 200
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 active 352 4 12800 121600 0 1
+large 1 active 355 0 10000 123500 0 1
+large 2 active 362 6 14600 127000 0 2
+large 3 active 366 4 14900 127100 0 1
+super 0 active 127 1 21700 237600 0 4
+super 1 active 150 2 19500 233400 0 4
+ultrasuper 0 active 166 1 52800 497400 0 5
+ultrasuper 1 active 201 5 58000 500700 10 4
+RCVD OK
+SENT .
+RCVD SCHD 38 large 2
+t:        477 job    38 (running) on # 2 of server large (active) SCHEDULED
+t:        477 job    38 on # 2 of server large RUNNING
+SENT OK
+RCVD REDY
+t:        488 job     1 on # 1 of server super COMPLETED
+SENT JCPL 488 1 super 1
+RCVD REDY
+SENT JOBN 491 39 364 1 1000 1000
+RCVD GETS Capable 1 1000 1000
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 active 352 4 12800 121600 0 1
+large 1 active 355 0 10000 123500 0 1
+large 2 active 362 5 13600 126800 0 3
+large 3 active 366 4 14900 127100 0 1
+super 0 active 127 1 21700 237600 0 4
+super 1 active 150 4 21000 236300 0 3
+ultrasuper 0 active 166 1 52800 497400 0 5
+ultrasuper 1 active 201 5 58000 500700 10 4
+RCVD OK
+SENT .
+RCVD SCHD 39 ultrasuper 1
+t:        491 job    39 (waiting) on # 1 of server ultrasuper (active) SCHEDULED
+SENT OK
+RCVD REDY
+SENT JOBN 501 40 48 4 4200 5900
+RCVD GETS Capable 4 4200 5900
+SENT DATA 16 124
+RCVD OK
+SENT medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 active 352 4 12800 121600 0 1
+large 1 active 355 0 10000 123500 0 1
+large 2 active 362 5 13600 126800 0 3
+large 3 active 366 4 14900 127100 0 1
+super 0 active 127 1 21700 237600 0 4
+super 1 active 150 4 21000 236300 0 3
+ultrasuper 0 active 166 1 52800 497400 0 5
+ultrasuper 1 active 201 5 58000 500700 11 4
+RCVD OK
+SENT .
+RCVD SCHD 40 ultrasuper 1
+t:        501 job    40 (waiting) on # 1 of server ultrasuper (active) SCHEDULED
+SENT OK
+RCVD REDY
+SENT JOBN 502 41 212 4 1500 700
+RCVD GETS Capable 4 1500 700
+SENT DATA 16 124
+RCVD OK
+SENT medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 active 352 4 12800 121600 0 1
+large 1 active 355 0 10000 123500 0 1
+large 2 active 362 5 13600 126800 0 3
+large 3 active 366 4 14900 127100 0 1
+super 0 active 127 1 21700 237600 0 4
+super 1 active 150 4 21000 236300 0 3
+ultrasuper 0 active 166 1 52800 497400 0 5
+ultrasuper 1 active 201 5 58000 500700 12 4
+RCVD OK
+SENT .
+RCVD SCHD 41 ultrasuper 1
+t:        502 job    41 (waiting) on # 1 of server ultrasuper (active) SCHEDULED
+SENT OK
+RCVD REDY
+SENT JOBN 502 42 111 1 300 1400
+RCVD GETS Capable 1 300 1400
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 active 352 4 12800 121600 0 1
+large 1 active 355 0 10000 123500 0 1
+large 2 active 362 5 13600 126800 0 3
+large 3 active 366 4 14900 127100 0 1
+super 0 active 127 1 21700 237600 0 4
+super 1 active 150 4 21000 236300 0 3
+ultrasuper 0 active 166 1 52800 497400 0 5
+ultrasuper 1 active 201 5 58000 500700 13 4
+RCVD OK
+SENT .
+RCVD SCHD 42 ultrasuper 1
+t:        502 job    42 (waiting) on # 1 of server ultrasuper (active) SCHEDULED
+SENT OK
+RCVD REDY
+SENT JOBN 505 43 232 12 15900 16000
+RCVD GETS Capable 12 15900 16000
+SENT DATA 4 124
+RCVD OK
+SENT super 0 active 127 1 21700 237600 0 4
+super 1 active 150 4 21000 236300 0 3
+ultrasuper 0 active 166 1 52800 497400 0 5
+ultrasuper 1 active 201 5 58000 500700 14 4
+RCVD OK
+SENT .
+RCVD SCHD 43 ultrasuper 1
+t:        505 job    43 (waiting) on # 1 of server ultrasuper (active) SCHEDULED
+SENT OK
+RCVD REDY
+t:        510 job    20 on # 0 of server super COMPLETED
+SENT JCPL 510 20 super 0
+RCVD REDY
+SENT JOBN 514 44 182 10 6000 36100
+RCVD GETS Capable 10 6000 36100
+SENT DATA 4 124
+RCVD OK
+SENT super 0 active 127 8 28900 249600 0 3
+super 1 active 150 4 21000 236300 0 3
+ultrasuper 0 active 166 1 52800 497400 0 5
+ultrasuper 1 active 201 5 58000 500700 15 4
+RCVD OK
+SENT .
+RCVD SCHD 44 super 0
+t:        514 job    44 (waiting) on # 0 of server super (active) SCHEDULED
+SENT OK
+RCVD REDY
+t:        517 job    14 on # 1 of server ultrasuper COMPLETED
+SENT JCPL 517 14 ultrasuper 1
+RCVD REDY
+t:        543 job    18 on # 0 of server large COMPLETED
+SENT JCPL 543 18 large 0
+RCVD REDY
+t:        622 job    13 on # 0 of server super COMPLETED
+t:        622 job    44 on # 0 of server super RUNNING
+SENT JCPL 622 13 super 0
+RCVD REDY
+t:        628 job     9 on # 1 of server ultrasuper COMPLETED
+SENT JCPL 628 9 ultrasuper 1
+RCVD REDY
+SENT JOBN 628 45 134 1 6000 6000
+RCVD GETS Capable 1 6000 6000
+SENT DATA 16 124
+RCVD OK
+SENT medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 idle 352 8 16000 128000 0 0
+large 1 active 355 0 10000 123500 0 1
+large 2 active 362 5 13600 126800 0 3
+large 3 active 366 4 14900 127100 0 1
+super 0 active 127 1 24800 214000 0 3
+super 1 active 150 4 21000 236300 0 3
+ultrasuper 0 active 166 1 52800 497400 0 5
+ultrasuper 1 active 201 11 62100 506100 15 2
+RCVD OK
+SENT .
+RCVD SCHD 45 ultrasuper 1
+t:        628 job    45 (waiting) on # 1 of server ultrasuper (active) SCHEDULED
+SENT OK
+RCVD REDY
+t:        651 job    37 on # 0 of server ultrasuper COMPLETED
+SENT JCPL 651 37 ultrasuper 0
+RCVD REDY
+SENT JOBN 660 46 178 1 400 1000
+RCVD GETS Capable 1 400 1000
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 idle 352 8 16000 128000 0 0
+large 1 active 355 0 10000 123500 0 1
+large 2 active 362 5 13600 126800 0 3
+large 3 active 366 4 14900 127100 0 1
+super 0 active 127 1 24800 214000 0 3
+super 1 active 150 4 21000 236300 0 3
+ultrasuper 0 active 166 8 58400 501300 0 4
+ultrasuper 1 active 201 11 62100 506100 16 2
+RCVD OK
+SENT .
+RCVD SCHD 46 ultrasuper 1
+t:        660 job    46 (waiting) on # 1 of server ultrasuper (active) SCHEDULED
+SENT OK
+RCVD REDY
+SENT JOBN 677 47 485 1 800 1700
+RCVD GETS Capable 1 800 1700
+SENT DATA 32 124
+RCVD OK
+SENT small 0 inactive -1 2 4000 32000 0 0
+small 1 inactive -1 2 4000 32000 0 0
+small 2 inactive -1 2 4000 32000 0 0
+small 3 inactive -1 2 4000 32000 0 0
+small 4 inactive -1 2 4000 32000 0 0
+small 5 inactive -1 2 4000 32000 0 0
+small 6 inactive -1 2 4000 32000 0 0
+small 7 inactive -1 2 4000 32000 0 0
+small 8 inactive -1 2 4000 32000 0 0
+small 9 inactive -1 2 4000 32000 0 0
+small 10 inactive -1 2 4000 32000 0 0
+small 11 inactive -1 2 4000 32000 0 0
+small 12 inactive -1 2 4000 32000 0 0
+small 13 inactive -1 2 4000 32000 0 0
+small 14 inactive -1 2 4000 32000 0 0
+small 15 inactive -1 2 4000 32000 0 0
+medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 idle 352 8 16000 128000 0 0
+large 1 active 355 0 10000 123500 0 1
+large 2 active 362 5 13600 126800 0 3
+large 3 active 366 4 14900 127100 0 1
+super 0 active 127 1 24800 214000 0 3
+super 1 active 150 4 21000 236300 0 3
+ultrasuper 0 active 166 8 58400 501300 0 4
+ultrasuper 1 active 201 11 62100 506100 17 2
+RCVD OK
+SENT .
+RCVD SCHD 47 ultrasuper 1
+t:        677 job    47 (waiting) on # 1 of server ultrasuper (active) SCHEDULED
+SENT OK
+RCVD REDY
+t:        680 job    35 on # 2 of server large COMPLETED
+SENT JCPL 680 35 large 2
+RCVD REDY
+t:        680 job    15 on # 0 of server ultrasuper COMPLETED
+SENT JCPL 680 15 ultrasuper 0
+RCVD REDY
+SENT JOBN 687 48 2276 3 3000 2500
+RCVD GETS Capable 3 3000 2500
+SENT DATA 16 124
+RCVD OK
+SENT medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 idle 352 8 16000 128000 0 0
+large 1 active 355 0 10000 123500 0 1
+large 2 active 362 6 14300 127700 0 2
+large 3 active 366 4 14900 127100 0 1
+super 0 active 127 1 24800 214000 0 3
+super 1 active 150 4 21000 236300 0 3
+ultrasuper 0 active 166 10 60400 504800 0 3
+ultrasuper 1 active 201 11 62100 506100 18 2
+RCVD OK
+SENT .
+RCVD SCHD 48 ultrasuper 1
+t:        687 job    48 (waiting) on # 1 of server ultrasuper (active) SCHEDULED
+SENT OK
+RCVD REDY
+SENT JOBN 714 49 107 4 3300 7900
+RCVD GETS Capable 4 3300 7900
+SENT DATA 16 124
+RCVD OK
+SENT medium 0 inactive -1 4 8000 64000 0 0
+medium 1 inactive -1 4 8000 64000 0 0
+medium 2 inactive -1 4 8000 64000 0 0
+medium 3 inactive -1 4 8000 64000 0 0
+medium 4 inactive -1 4 8000 64000 0 0
+medium 5 inactive -1 4 8000 64000 0 0
+medium 6 inactive -1 4 8000 64000 0 0
+medium 7 inactive -1 4 8000 64000 0 0
+large 0 idle 352 8 16000 128000 0 0
+large 1 active 355 0 10000 123500 0 1
+large 2 active 362 6 14300 127700 0 2
+large 3 active 366 4 14900 127100 0 1
+super 0 active 127 1 24800 214000 0 3
+super 1 active 150 4 21000 236300 0 3
+ultrasuper 0 active 166 10 60400 504800 0 3
+ultrasuper 1 active 201 11 62100 506100 19 2
+RCVD OK
+SENT .
+RCVD SCHD 49 ultrasuper 1
+t:        714 job    49 (waiting) on # 1 of server ultrasuper (active) SCHEDULED
+SENT OK
+RCVD REDY
+t:        725 job    44 on # 0 of server super COMPLETED
+SENT JCPL 725 44 super 0
+RCVD REDY
+t:        752 job    19 on # 1 of server large COMPLETED
+SENT JCPL 752 19 large 1
+RCVD REDY
+t:        758 job     7 on # 0 of server super COMPLETED
+SENT JCPL 758 7 super 0
+RCVD REDY
+t:        799 job     8 on # 1 of server ultrasuper COMPLETED
+SENT JCPL 799 8 ultrasuper 1
+RCVD REDY
+t:        904 job    38 on # 2 of server large COMPLETED
+SENT JCPL 904 38 large 2
+RCVD REDY
+t:        908 job    22 on # 3 of server large COMPLETED
+SENT JCPL 908 22 large 3
+RCVD REDY
+t:       1016 job    36 on # 0 of server ultrasuper COMPLETED
+SENT JCPL 1016 36 ultrasuper 0
+RCVD REDY
+t:       1128 job    17 on # 1 of server super COMPLETED
+SENT JCPL 1128 17 super 1
+RCVD REDY
+t:       1555 job    23 on # 0 of server ultrasuper COMPLETED
+SENT JCPL 1555 23 ultrasuper 0
+RCVD REDY
+t:       1759 job     0 on # 0 of server super COMPLETED
+SENT JCPL 1759 0 super 0
+RCVD REDY
+t:       1897 job    34 on # 2 of server large COMPLETED
+SENT JCPL 1897 34 large 2
+RCVD REDY
+t:       1900 job     2 on # 0 of server ultrasuper COMPLETED
+SENT JCPL 1900 2 ultrasuper 0
+RCVD REDY
+t:       2999 job    16 on # 1 of server super COMPLETED
+SENT JCPL 2999 16 super 1
+RCVD REDY
+t:       3080 job     3 on # 1 of server ultrasuper COMPLETED
+t:       3080 job    24 on # 1 of server ultrasuper RUNNING
+SENT JCPL 3080 3 ultrasuper 1
+RCVD REDY
+t:       3256 job     6 on # 1 of server super COMPLETED
+SENT JCPL 3256 6 super 1
+RCVD REDY
+t:       3388 job    24 on # 1 of server ultrasuper COMPLETED
+t:       3388 job    25 on # 1 of server ultrasuper RUNNING
+t:       3388 job    26 on # 1 of server ultrasuper RUNNING
+SENT JCPL 3388 24 ultrasuper 1
+RCVD REDY
+t:       3461 job    26 on # 1 of server ultrasuper COMPLETED
+t:       3461 job    27 on # 1 of server ultrasuper RUNNING
+t:       3461 job    28 on # 1 of server ultrasuper RUNNING
+SENT JCPL 3461 26 ultrasuper 1
+RCVD REDY
+t:       3801 job    28 on # 1 of server ultrasuper COMPLETED
+SENT JCPL 3801 28 ultrasuper 1
+RCVD REDY
+t:       3843 job    25 on # 1 of server ultrasuper COMPLETED
+SENT JCPL 3843 25 ultrasuper 1
+RCVD REDY
+t:       4237 job    27 on # 1 of server ultrasuper COMPLETED
+t:       4237 job    29 on # 1 of server ultrasuper RUNNING
+SENT JCPL 4237 27 ultrasuper 1
+RCVD REDY
+t:       4271 job    29 on # 1 of server ultrasuper COMPLETED
+t:       4271 job    30 on # 1 of server ultrasuper RUNNING
+SENT JCPL 4271 29 ultrasuper 1
+RCVD REDY
+t:       4774 job    30 on # 1 of server ultrasuper COMPLETED
+t:       4774 job    31 on # 1 of server ultrasuper RUNNING
+t:       4774 job    32 on # 1 of server ultrasuper RUNNING
+t:       4774 job    33 on # 1 of server ultrasuper RUNNING
+t:       4774 job    39 on # 1 of server ultrasuper RUNNING
+t:       4774 job    40 on # 1 of server ultrasuper RUNNING
+SENT JCPL 4774 30 ultrasuper 1
+RCVD REDY
+t:       4873 job    40 on # 1 of server ultrasuper COMPLETED
+t:       4873 job    41 on # 1 of server ultrasuper RUNNING
+t:       4873 job    42 on # 1 of server ultrasuper RUNNING
+SENT JCPL 4873 40 ultrasuper 1
+RCVD REDY
+t:       5140 job    42 on # 1 of server ultrasuper COMPLETED
+SENT JCPL 5140 42 ultrasuper 1
+RCVD REDY
+t:       5230 job    39 on # 1 of server ultrasuper COMPLETED
+SENT JCPL 5230 39 ultrasuper 1
+RCVD REDY
+t:       5334 job    33 on # 1 of server ultrasuper COMPLETED
+SENT JCPL 5334 33 ultrasuper 1
+RCVD REDY
+t:       5400 job    41 on # 1 of server ultrasuper COMPLETED
+SENT JCPL 5400 41 ultrasuper 1
+RCVD REDY
+t:       5631 job    32 on # 1 of server ultrasuper COMPLETED
+SENT JCPL 5631 32 ultrasuper 1
+RCVD REDY
+t:       6788 job    31 on # 1 of server ultrasuper COMPLETED
+t:       6788 job    43 on # 1 of server ultrasuper RUNNING
+t:       6788 job    45 on # 1 of server ultrasuper RUNNING
+t:       6788 job    46 on # 1 of server ultrasuper RUNNING
+t:       6788 job    47 on # 1 of server ultrasuper RUNNING
+SENT JCPL 6788 31 ultrasuper 1
+RCVD REDY
+t:       6926 job    43 on # 1 of server ultrasuper COMPLETED
+t:       6926 job    48 on # 1 of server ultrasuper RUNNING
+t:       6926 job    49 on # 1 of server ultrasuper RUNNING
+SENT JCPL 6926 43 ultrasuper 1
+RCVD REDY
+t:       6944 job    46 on # 1 of server ultrasuper COMPLETED
+SENT JCPL 6944 46 ultrasuper 1
+RCVD REDY
+t:       6994 job    49 on # 1 of server ultrasuper COMPLETED
+SENT JCPL 6994 49 ultrasuper 1
+RCVD REDY
+t:       7022 job    45 on # 1 of server ultrasuper COMPLETED
+SENT JCPL 7022 45 ultrasuper 1
+RCVD REDY
+t:       7174 job    47 on # 1 of server ultrasuper COMPLETED
+SENT JCPL 7174 47 ultrasuper 1
+RCVD REDY
+t:       8707 job    48 on # 1 of server ultrasuper COMPLETED
+SENT JCPL 8707 48 ultrasuper 1
+RCVD REDY
+SENT NONE
+RCVD QUIT
+SENT QUIT
+# -------------------------------------------------------------------------------------
+# 0 small servers used with a utilisation of 0.00 at the cost of $0.00
+# 0 medium servers used with a utilisation of 0.00 at the cost of $0.00
+# 4 large servers used with a utilisation of 99.77 at the cost of $0.59
+# 2 super servers used with a utilisation of 100.00 at the cost of $2.11
+# 2 ultrasuper servers used with a utilisation of 100.00 at the cost of $4.55
+# ==================================== [ Summary ] ====================================
+# actual simulation end time: 8707, #jobs: 50 (failed 0 times)
+# total #servers used: 8, avg util: 99.89% (ef. usage: 99.92%), total cost: $7.25
+# avg waiting time: 1820, avg exec time: 633, avg turnaround time: 2453

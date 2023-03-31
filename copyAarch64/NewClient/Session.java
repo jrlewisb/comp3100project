@@ -73,6 +73,7 @@ public class Session
         writeln("SCHD " + job.id + " " + server.type + " " + server.id);
     }
 
+
     public String[] handleData(String header) throws Exception
     {
         print("HEADER RCVD: " + header);
@@ -110,12 +111,27 @@ public class Session
         if(responseEqual("."))
         {
             Server[] servers = new Server[serversRaw.length];
+            print("RAW SERVERS");
             for(int i = 0; i < serversRaw.length; i++)
-            {
+            {   
                 print(serversRaw[i]);
                 servers[i] = new Server(serversRaw[i]);
             }
+            // int minRunning = Integer.Max();
+            // Server mostSuitable;
+            // for(int i = 0; i < serversRaw.length - 1; i++)
+            // {
+            //     minRunning = min(servers[0].runningJobs, minRunning)
+            //     if(servers[i].runningJobs
+            // }
             Arrays.sort(servers);
+            print("SORTED SERVERS:");
+            for(int i = 0; i < servers.length; i++)
+            {
+                System.out.println(servers[i].type);
+            }
+
+            print("SCHEDULING CHOICE MADE FOR: " + job.id + " TO SERVER: " + servers[0]);
             sendSCHD(job, servers[0]);
             
 
@@ -128,7 +144,7 @@ public class Session
     {
         //job completion
         //should just continue?
-        writeln("OK");
+        //
         return;
     }
 
