@@ -74,11 +74,11 @@ for conf in $configDir/*.xml; do
 	echo "running the reference implementation (./ds-client)..."
 	sleep 1
 	if [[ $newline == "n" ]]; then
-		./ds-server -c $conf -v all -n > $conf-ref-log.txt&
+		./ds-server -c $conf -v brief -n > $conf-ref-log.txt&
 		sleep 4
 		./ds-client -a lrr -n
 	else
-		./ds-server -c $conf -v all > $conf-ref-log.txt&
+		./ds-server -c $conf -v brief > $conf-ref-log.txt&
 		sleep 4
 		./ds-client -a lrr
 	fi
@@ -86,9 +86,9 @@ for conf in $configDir/*.xml; do
 	echo "running your implementation ($yourClient)..."
 	sleep 2
 	if [[ $newline == "n" ]]; then
-		./ds-server -c $conf -v all -n > $conf-my-log.txt&
+		./ds-server -c $conf -v brief -n > $conf-my-log.txt&
 	else
-		./ds-server -c $conf -v all > $conf-my-log.txt&
+		./ds-server -c $conf -v brief > $conf-my-log.txt&
 	fi
 	sleep 4
 	java $javaArgs $(sed 's/\.class//' <<< $yourClient)$clientArgs
