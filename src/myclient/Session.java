@@ -6,11 +6,10 @@ import java.util.Arrays;
 
 public class Session
 {
-    boolean debug = false; //set to true to see debug output
+    private boolean debug = false; //set to true to see debug output
     BufferedReader in;
     DataOutputStream out;
     Socket sock;
-    Server[] sortedServers;
     SchedulingManager schedulingManager;
 
     public class LRRManager extends SchedulingManager
@@ -232,7 +231,7 @@ public class Session
             writeln("QUIT");
             out.close();
             if(responseEqual("QUIT")){ in.close(); }
-            sock.close();
+            return;
         }
     }
 }
