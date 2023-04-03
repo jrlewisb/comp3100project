@@ -108,7 +108,7 @@ public class Session
             writeln("HELO");
             if(responseEqual("OK"))
             {
-                writeln("AUTH josh");
+                writeln("AUTH " + System.getProperty("user.name"));
                 if(responseEqual("OK"))
                 {
                     return true;
