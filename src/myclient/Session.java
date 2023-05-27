@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class Session
 {
-    private boolean debug = false; //set to true to see debug output
+    private boolean debug = true; //set to true to see debug output
     BufferedReader in;
     DataOutputStream out;
     Socket sock;
@@ -24,7 +24,7 @@ public class Session
             this.largestType = this.servers[0].type; //assign the largest type
         }
 
-        Server getNextServer(Server[] capableServers)
+        Server getNextServer(Job job, Server[] capableServers)
         {
             Vector<Server> serversOfLargestType = new Vector<Server>();
 
@@ -41,6 +41,53 @@ public class Session
         }
     }
 
+    public class FCManager extends SchedulingManager {
+        void initialise(String[] serversRaw) {
+            this.servers = makeServerArray(serversRaw);
+        }
+
+        Server getNextServer(Job job, Server[] capableServers) {
+            return this.servers[0];
+        }
+    }
+    
+    public class AssignmentManager extends SchedulingManager {
+        int capacity;
+        //This will be my assignment algorithm
+        //Lets call it "first capable low capacity"
+        //Because we have bootup time costs,
+        //We want to use servers that are running, if possible
+        //However, we don't want to use the same servers for all jobs 
+        //If there are other servers available
+        //So we will set some threshold for capacity
+        //And if the server is below that capacity, we will use it
+        //Otherwise, we will use the next best server under capacity
+        //In the case that the next server is not capable
+
+        //Other option:
+        //Jobs have a estimated time,
+        //Servers have power
+        //if the power of a
+        void initialise(String[] serversRaw) {
+            this.capacity = 3;
+        }
+
+        Server getNextServer(Job job, Server[] capableServers) {
+            Arrays.sort(capableServers);
+
+            for(int i = 0; i < capableServers.length; i++)
+            {
+                if (capableServers[i].waitingJobs + capableServers[i].runningJobs < this.capacity) {
+                    return capableServers[i];
+                }
+            }
+            
+            //If there is no other option, let's bump the capacity
+            this.capacity++;
+            return capableServers[0];
+        }
+    }
+
     public Session(Socket sock, String algorithm)
     {
         try
@@ -52,7 +99,12 @@ public class Session
         }catch(Exception e){System.out.println(e);}
 
         //if our session was successfully started, lets instanciate our schedulingManager
-        if(algorithm.equals("lrr")){ this.schedulingManager = new LRRManager(); }
+        switch(algorithm)
+        {
+            case "lrr" : this.schedulingManager = new LRRManager(); break;
+            case "fc"  : this.schedulingManager = new FCManager(); break;
+        }
+        
     }
 
     public void print(String s)
@@ -123,7 +175,9 @@ public class Session
 
     public void sendSCHD(Job job, Server server) throws Exception
     {
-        writeln("SCHD " + job.id + " " + server.type + " " + server.id);
+        String infoString = "SCHD " + job.id + " " + server.type + " " + server.id;
+        debugln(infoString);
+        writeln(infoString);
     }
 
 
@@ -172,13 +226,13 @@ public class Session
                 capableServers[i] = new Server(serversRaw[i]);
             }
 
-            sendSCHD(job, schedulingManager.getNextServer(capableServers));
+            sendSCHD(job, schedulingManager.getNextServer(job, capableServers));
         }
         if(!in.readLine().equals("OK")){throw new Exception();}
 
     }
 
-    Server[] sortServers(String[] rawServers)
+    Server[] makeServerArray(String[] rawServers)
     {
         Server[] servers = new Server[rawServers.length];
 
@@ -187,9 +241,15 @@ public class Session
                 servers[i] = new Server(rawServers[i]);
             }
 
-            Arrays.sort(servers);
             return servers;
             //end sort servers
+    }
+
+    Server[] sortServers(String[] rawServers)
+    {
+        Server[] serverArray = makeServerArray(rawServers);
+        Arrays.sort(serverArray);
+        return serverArray;
     }
 
     void handleJCPL(EventData e) throws Exception
@@ -229,7 +289,7 @@ public class Session
                 handleEvent(event);
             }
             writeln("QUIT");
-            out.close();
+            //out.close();
             if(responseEqual("QUIT")){ in.close(); }
             return;
         }

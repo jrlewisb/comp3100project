@@ -1,0 +1,10 @@
+*.tar
+p.txt
+*.class
+*.xml
+*.txt
+*.diff
+*.class
+.DS_Store
+.png
+.jpg
