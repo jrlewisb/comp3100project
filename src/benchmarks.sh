@@ -1,7 +1,7 @@
 
 
 #for x in ff bf ffq bfq wfq
-for x in bf 
+for x in ffq 
 do
     ./runallwithlog.sh $x "ds-client" "benchmarks/$x/ds-client.txt"&
     sleep 4

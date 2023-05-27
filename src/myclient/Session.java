@@ -3,6 +3,8 @@ import java.net.*;
 import java.lang.Math.*;
 import java.util.Vector;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Session
 {
@@ -127,30 +129,28 @@ public class Session
     }
     
     public class FFQManager extends SchedulingManager {
+        private Queue<Job> jobQueue = new LinkedList<Job>();
+        
         Server getNextServer(Job job) throws Exception {
-            for (int i = 0; i < this.servers.length; i++)
-            {
-                Server s = this.servers[i];
+            for (Server s : this.servers) {
                 if (!s.state.strip().equalsIgnoreCase("inactive")) {
-                    if (s.waitingJobs > 0) {
-                        Vector<Job> jobsOnServer = LSTJ(s);
-                    }
-                    
-                    debugln("sumcores: " + job.coresReq + " and server has: " + s.cores + " available!");
-                    debugln("sumMemory: " + job.memoryReq + " and server has: " + s.memory + " available!");
-                    debugln("sumDisk: " + job.diskReq + " and server has: " + s.disk + " available!");
                     if ((s.cores - job.coresReq >= 0) && (s.memory - job.memoryReq >= 0) && (s.disk - job.diskReq >= 0)) {
+                        debugln("sumcores: " + job.coresReq + " and server has: " + s.cores + " available!");
+                        debugln("sumMemory: " + job.memoryReq + " and server has: " + s.memory + " available!");
+                        debugln("sumDisk: " + job.diskReq + " and server has: " + s.disk + " available!");
                         debugln("I CAN SCHEDULE IT HERE");
+                        if (s.waitingJobs > 0) {
+                            Vector<Job> jobsOnServer = LSTJ(s);
+                        }
                         return s;
+                    } else if (s.waitingJobs > 0) {
+                            Vector<Job> jobsOnServer = LSTJ(s);
                     }
-
                 } else {
                     return s;
                 }
             }
-            return this.servers[0];
-            
-            
+            return null; 
         }
 
         void schedule(Job job) throws Exception
@@ -158,9 +158,27 @@ public class Session
             writeln("GETS Capable " + job.requirements());
             String[] serversRaw = handleData(in.readLine());
             this.servers = makeServerArray(serversRaw);
-            sendSCHD(job, getNextServer(job));
+            Server nextServer = getNextServer(job);
+            if (nextServer != null) {
+                sendSCHD(job, nextServer);
+            } else {
+                jobQueue.offer(job);
+            }
 
         }
+        
+        void checkQueue() throws Exception {
+        while (!jobQueue.isEmpty()) {
+            Job job = jobQueue.peek();
+            Server server = getNextServer(job);
+            if (server != null) {
+                sendSCHD(job, server);
+                jobQueue.poll(); // remove queued job
+            } else {
+                break; //if queue head cannot be scheduled , break
+            }
+        }
+    }
     }
     
     public class BFQManager extends SchedulingManager {
@@ -168,10 +186,12 @@ public class Session
             return this.servers[0];
         }
 
-        void schedule(Job job) throws Exception {
+        void schedule(Job job) throws Exception
+        {
             writeln("GETS Capable " + job.requirements());
             String[] serversRaw = handleData(in.readLine());
-            if (responseEqual(".")) {
+            if(responseEqual("."))
+            {
                 this.servers = makeServerArray(serversRaw);
                 sendSCHD(job, getNextServer(job));
             }
