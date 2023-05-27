@@ -182,20 +182,59 @@ public class Session
     }
     
     public class BFQManager extends SchedulingManager {
-        Server getNextServer(Job job) {
-            return this.servers[0];
+        private Queue<Job> jobQueue = new LinkedList<Job>();
+        
+        Server getNextServer(Job job) throws Exception {
+            Server bestServer = null;
+            for (int i = 0; i < this.servers.length; i++)
+            {
+                Server s = this.servers[i];
+                if (!s.state.strip().equalsIgnoreCase("inactive")) {
+                    if (s.waitingJobs > 0) {
+                        Vector<Job> jobsOnServer = LSTJ(s);
+                    }
+                }
+                if(s.cores < job.coresReq || 
+                (s.cores == job.coresReq && s.memory < job.memoryReq ) ||
+                        (s.cores == job.coresReq && s.memory == job.memoryReq && s.disk < job.diskReq)) {
+                    continue;
+                }
+                if (bestServer == null) {
+                    bestServer = s;
+                }
+                if  (s.cores < bestServer.cores || 
+                    (s.cores == bestServer.cores && s.memory < bestServer.memory) || 
+                        (s.cores == bestServer.cores && s.memory == bestServer.memory && s.disk < bestServer.disk)) {
+                    bestServer = s;
+                }
+            }
+            return bestServer;
         }
 
-        void schedule(Job job) throws Exception
-        {
+        void schedule(Job job) throws Exception {
             writeln("GETS Capable " + job.requirements());
             String[] serversRaw = handleData(in.readLine());
-            if(responseEqual("."))
-            {
-                this.servers = makeServerArray(serversRaw);
-                sendSCHD(job, getNextServer(job));
+            this.servers = makeServerArray(serversRaw);
+            Server nextServer = getNextServer(job);
+            if (nextServer != null) {
+                sendSCHD(job, nextServer);
+            } else {
+                jobQueue.offer(job);
             }
         }
+        
+        void checkQueue() throws Exception {
+        while (!jobQueue.isEmpty()) {
+            Job job = jobQueue.peek();
+            Server server = getNextServer(job);
+            if (server != null) {
+                sendSCHD(job, server);
+                jobQueue.poll(); // this is copy paste so lets move this code into a QueueSchedulingManager impl. and define it there
+            } else {
+                break; 
+            }
+        }
+    }
     }
     
     public class WFQManager extends SchedulingManager
@@ -275,6 +314,9 @@ public class Session
                 break;
             case "ffq":
                 this.schedulingManager = new FFQManager();
+                break;
+            case "bfq":
+                this.schedulingManager = new BFQManager();
                 break;
             case "wfq":
                 this.schedulingManager = new BFQManager();
