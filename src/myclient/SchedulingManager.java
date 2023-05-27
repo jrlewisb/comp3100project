@@ -1,7 +1,9 @@
 abstract class SchedulingManager
 {
     Server[] servers;
-    abstract void initialise(String[] serversRaw);
 
-    abstract Server getNextServer(Job job, Server[] capableServers);
+
+    abstract Server getNextServer(Job job);
+    abstract void schedule(Job job) throws Exception;
+
 }

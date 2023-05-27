@@ -17,37 +17,115 @@ public class Session
         //Stateful member variables that we require for our algorithm - these should only be accessed from within the algorithm and we provide a generic interface to the session
         int robinNumber = 0;
         String largestType;
-        void initialise(String[] serversRaw)
-        {
-            //Here, we should define any pre-conditions for our algorithm. For example in LRR, we get the largest sorted servers once at the start.
-            this.servers = sortServers(serversRaw); //sort the servers
-            this.largestType = this.servers[0].type; //assign the largest type
-        }
 
-        Server getNextServer(Job job, Server[] capableServers)
+        Server getNextServer(Job job)
         {
             Vector<Server> serversOfLargestType = new Vector<Server>();
 
-            for(Server s : capableServers)
-            {
-                if(s.type.equals(largestType))
-                {
+            for (Server s : this.servers) {
+                if (s.type.equals(largestType)) {
                     serversOfLargestType.add(s);
-                } 
+                }
             }
 
             this.robinNumber %= serversOfLargestType.size();
             return serversOfLargestType.get(this.robinNumber++);
         }
+        
+        void schedule(Job job) throws Exception{
+            writeln("GETS Capable " + job.requirements());
+            String[] serversRaw = handleData(in.readLine());
+            if(responseEqual("."))
+            {
+                if (this.servers == null)
+                {
+                    this.servers = sortServers(serversRaw); //sort the servers
+                    this.largestType = this.servers[0].type; //assign the largest type
+                }
+                sendSCHD(job, getNextServer(job));
+            }
+        }
     }
 
-    public class FCManager extends SchedulingManager {
-        void initialise(String[] serversRaw) {
-            this.servers = makeServerArray(serversRaw);
+    public class FFManager extends SchedulingManager {
+        Server getNextServer(Job job) {
+            return this.servers[0];
         }
 
-        Server getNextServer(Job job, Server[] capableServers) {
+        void schedule(Job job) throws Exception
+        {
+            writeln("GETS Capable " + job.requirements());
+            String[] serversRaw = handleData(in.readLine());
+            if(responseEqual("."))
+            {
+                this.servers = makeServerArray(serversRaw);
+                sendSCHD(job, getNextServer(job));
+            }
+        }
+    }
+
+    public class BFManager extends SchedulingManager {
+
+        Server getNextServer(Job job) {
+            return this.servers[this.servers.length - 1];
+        }
+
+        void schedule(Job job) throws Exception {
+            writeln("GETS Capable " + job.requirements());
+            String[] serversRaw = handleData(in.readLine());
+            if (responseEqual(".")) {
+                this.servers = sortServers(serversRaw);
+                sendSCHD(job, getNextServer(job));
+            }
+        }
+
+    }
+    
+    public class FFQManager extends SchedulingManager {
+        Server getNextServer(Job job) {
             return this.servers[0];
+        }
+
+        void schedule(Job job) throws Exception {
+            writeln("GETS Capable " + job.requirements());
+            String[] serversRaw = handleData(in.readLine());
+            if (responseEqual(".")) {
+                this.servers = makeServerArray(serversRaw);
+                sendSCHD(job, getNextServer(job));
+            }
+        }
+    }
+    
+    public class BFQManager extends SchedulingManager {
+        Server getNextServer(Job job) {
+            return this.servers[0];
+        }
+
+        void schedule(Job job) throws Exception {
+            writeln("GETS Capable " + job.requirements());
+            String[] serversRaw = handleData(in.readLine());
+            if (responseEqual(".")) {
+                this.servers = makeServerArray(serversRaw);
+                sendSCHD(job, getNextServer(job));
+            }
+        }
+    }
+    
+    public class WFQManager extends SchedulingManager
+    {
+        Server getNextServer(Job job) {
+            return this.servers[0];
+        }
+
+        void schedule(Job job) throws Exception
+        {
+            writeln("GETS Capable " + job.requirements());
+            String[] serversRaw = handleData(in.readLine());
+            if(responseEqual("."))
+            {
+                this.servers = makeServerArray(serversRaw);
+                sendSCHD(job, getNextServer(job));
+            }
         }
     }
     
@@ -68,23 +146,23 @@ public class Session
         //Jobs have a estimated time,
         //Servers have power
         //if the power of a
-        void initialise(String[] serversRaw) {
+        AssignmentManager() {
             this.capacity = 3;
         }
 
-        Server getNextServer(Job job, Server[] capableServers) {
-            Arrays.sort(capableServers);
-
-            for(int i = 0; i < capableServers.length; i++)
+        Server getNextServer(Job job) {
+            return new Server("temp");
+        }
+        
+        void schedule(Job job) throws Exception
+        {
+            writeln("GETS Capable " + job.requirements());
+            String[] serversRaw = handleData(in.readLine());
+            if(responseEqual("."))
             {
-                if (capableServers[i].waitingJobs + capableServers[i].runningJobs < this.capacity) {
-                    return capableServers[i];
-                }
+                this.servers = sortServers(serversRaw);
+                sendSCHD(job, getNextServer(job));
             }
-            
-            //If there is no other option, let's bump the capacity
-            this.capacity++;
-            return capableServers[0];
         }
     }
 
@@ -102,7 +180,18 @@ public class Session
         switch(algorithm)
         {
             case "lrr" : this.schedulingManager = new LRRManager(); break;
-            case "fc"  : this.schedulingManager = new FCManager(); break;
+            case "ff":
+                this.schedulingManager = new FFManager();
+                break;
+            case "bf":
+                this.schedulingManager = new BFManager();
+                break;
+            case "ffq":
+                this.schedulingManager = new FFQManager();
+                break;
+            case "wfq":
+                this.schedulingManager = new BFQManager();
+                break;
         }
         
     }
@@ -211,23 +300,7 @@ public class Session
         debugln(job.type);
         for(String s : e.tokens){ debug(s + " ,"); } //debug
         debugln("\n");
-        writeln("GETS Capable " + job.requirements());
-        String[] serversRaw = handleData(in.readLine());
-        if(this.schedulingManager.servers == null)
-        {
-            schedulingManager.initialise(serversRaw);
-        }
-        if(responseEqual("."))
-        {
-            Server[] capableServers = new Server[serversRaw.length];
-            debugln("RAW SERVERS");
-            for(int i = 0; i < serversRaw.length; i++)
-            {   
-                capableServers[i] = new Server(serversRaw[i]);
-            }
-
-            sendSCHD(job, schedulingManager.getNextServer(job, capableServers));
-        }
+        schedulingManager.schedule(job);
         if(!in.readLine().equals("OK")){throw new Exception();}
 
     }
