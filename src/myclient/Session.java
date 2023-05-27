@@ -48,51 +48,118 @@ public class Session
     }
 
     public class FFManager extends SchedulingManager {
-        Server getNextServer(Job job) {
+        Server getNextServer(Job job) throws Exception {
+            for (int i = 0; i < this.servers.length; i++)
+            {
+                Server s = this.servers[i];
+                if (!s.state.strip().equalsIgnoreCase("inactive")) {
+                    if (s.waitingJobs > 0) {
+                        Vector<Job> jobsOnServer = LSTJ(s);
+                    }
+                    
+                    debugln("sumcores: " + job.coresReq + " and server has: " + s.cores + " available!");
+                    debugln("sumMemory: " + job.memoryReq + " and server has: " + s.memory + " available!");
+                    debugln("sumDisk: " + job.diskReq + " and server has: " + s.disk + " available!");
+                    if ((s.cores - job.coresReq >= 0) && (s.memory - job.memoryReq >= 0) && (s.disk - job.diskReq >= 0)) {
+                        debugln("I CAN SCHEDULE IT HERE");
+                        return s;
+                    }
+
+                } else {
+                    return s;
+                }
+            }
             return this.servers[0];
+            
+            
         }
 
         void schedule(Job job) throws Exception
         {
             writeln("GETS Capable " + job.requirements());
             String[] serversRaw = handleData(in.readLine());
-            if(responseEqual("."))
-            {
-                this.servers = makeServerArray(serversRaw);
-                sendSCHD(job, getNextServer(job));
-            }
+            this.servers = makeServerArray(serversRaw);
+            sendSCHD(job, getNextServer(job));
+
         }
     }
 
     public class BFManager extends SchedulingManager {
 
-        Server getNextServer(Job job) {
-            return this.servers[this.servers.length - 1];
+        Server getNextServer(Job job) throws Exception {
+            Server bestServer = null;
+            for (int i = 0; i < this.servers.length; i++)
+            {
+                Server s = this.servers[i];
+                if (!s.state.strip().equalsIgnoreCase("inactive")) {
+                    if (s.waitingJobs > 0) {
+                        Vector<Job> jobsOnServer = LSTJ(s);
+                    }
+                }
+                if(s.cores < job.coresReq || 
+                (s.cores == job.coresReq && s.memory < job.memoryReq ) ||
+                        (s.cores == job.coresReq && s.memory == job.memoryReq && s.disk < job.diskReq)) {
+                    continue;
+                }
+                if (bestServer == null) {
+                    bestServer = s;
+                }
+                if  (s.cores < bestServer.cores || 
+                    (s.cores == bestServer.cores && s.memory < bestServer.memory) || 
+                        (s.cores == bestServer.cores && s.memory == bestServer.memory && s.disk < bestServer.disk)) {
+                    bestServer = s;
+                }
+            }
+            return bestServer;
+            
+            
         }
 
-        void schedule(Job job) throws Exception {
+        void schedule(Job job) throws Exception
+        {
             writeln("GETS Capable " + job.requirements());
             String[] serversRaw = handleData(in.readLine());
-            if (responseEqual(".")) {
-                this.servers = sortServers(serversRaw);
-                sendSCHD(job, getNextServer(job));
-            }
+            this.servers = makeServerArray(serversRaw);
+            sendSCHD(job, getNextServer(job));
+
         }
 
     }
     
     public class FFQManager extends SchedulingManager {
-        Server getNextServer(Job job) {
+        Server getNextServer(Job job) throws Exception {
+            for (int i = 0; i < this.servers.length; i++)
+            {
+                Server s = this.servers[i];
+                if (!s.state.strip().equalsIgnoreCase("inactive")) {
+                    if (s.waitingJobs > 0) {
+                        Vector<Job> jobsOnServer = LSTJ(s);
+                    }
+                    
+                    debugln("sumcores: " + job.coresReq + " and server has: " + s.cores + " available!");
+                    debugln("sumMemory: " + job.memoryReq + " and server has: " + s.memory + " available!");
+                    debugln("sumDisk: " + job.diskReq + " and server has: " + s.disk + " available!");
+                    if ((s.cores - job.coresReq >= 0) && (s.memory - job.memoryReq >= 0) && (s.disk - job.diskReq >= 0)) {
+                        debugln("I CAN SCHEDULE IT HERE");
+                        return s;
+                    }
+
+                } else {
+                    return s;
+                }
+            }
             return this.servers[0];
+            
+            
         }
 
-        void schedule(Job job) throws Exception {
+        void schedule(Job job) throws Exception
+        {
             writeln("GETS Capable " + job.requirements());
             String[] serversRaw = handleData(in.readLine());
-            if (responseEqual(".")) {
-                this.servers = makeServerArray(serversRaw);
-                sendSCHD(job, getNextServer(job));
-            }
+            this.servers = makeServerArray(serversRaw);
+            sendSCHD(job, getNextServer(job));
+
         }
     }
     
@@ -288,20 +355,26 @@ public class Session
         }
         //after all data recieved
         writeln("OK");
-        for(String l : lines){
+        for (String l : lines) {
             debugln(l);
         }
-        return lines;
+
+        if (responseEqual(".")) {
+            return lines;
+        } else {
+            throw new Exception();
+        }
+        
     }
 
     public void handleJOBN(EventData e) throws Exception
     {
         Job job = new Job(e.tokens);
         debugln(job.type);
-        for(String s : e.tokens){ debug(s + " ,"); } //debug
+        for(String s : e.tokens){ debug(s + ", "); } //debug
         debugln("\n");
         schedulingManager.schedule(job);
-        if(!in.readLine().equals("OK")){throw new Exception();}
+        if(!responseEqual("OK")){throw new Exception();}
 
     }
 
@@ -331,6 +404,30 @@ public class Session
         //should just continue?
         //
         return;
+    }
+
+    Vector<Job> LSTJ(Server server) throws Exception
+    {
+        writeln("LSTJ " + server.type + " " + server.id);
+        String[] jobStrings = handleData(in.readLine());
+        Vector<Job> jobsVector = new Vector<Job>();
+        for (String str : jobStrings) {
+            debugln(str);
+            String[] tokens = str.split(" ");
+            String jobId = tokens[0];
+            String jobState = tokens[1];
+            String submitTime = tokens[2];
+            String startTime = tokens[3];
+            String estRunTime = tokens[4];
+            String coresReq = tokens[5];
+            String memoryReq = tokens[6];
+            String diskReq = tokens[7];
+            debugln("id: " + jobId + ", " + "State: " + jobState + ", " + "submitTime: " + submitTime + ", "
+                    + "estRunTime: " + estRunTime + ", " + "coresReq: " + coresReq + ", " + "memoryReq: " + memoryReq
+                    + ", " + "diskReq: " + diskReq);
+            jobsVector.add(new Job(jobId, jobState, submitTime, estRunTime, coresReq, memoryReq, diskReq));
+        }
+        return jobsVector;
     }
 
     public void handleEvent(String s) throws Exception

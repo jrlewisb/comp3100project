@@ -18,6 +18,16 @@ public class Job
         diskReq = Integer.valueOf(tokens[6]);
     }
 
+    public Job(String id, String type, String submitTime, String estRunTime, String coresReq, String memoryReq, String diskReq) {
+        this.id = Integer.valueOf(id);
+        this.type = type;
+        this.submitTime = Integer.valueOf(submitTime);
+        this.estRunTime = Integer.valueOf(estRunTime);
+        this.coresReq = Integer.valueOf(coresReq);
+        this.memoryReq = Integer.valueOf(memoryReq);
+        this.diskReq = Integer.valueOf(diskReq);
+    }
+
     String requirements()
     {
         return coresReq + " " + memoryReq + " " + diskReq;
