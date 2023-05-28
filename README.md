@@ -1,11 +1,22 @@
-NAVIGATE TO ./src DIRECTORY BEFORE RUNNING ANY SCRIPTS
+PROJECT 2 README
 
-to build the client, run                    ./build.sh              <br>
-to build&test client on S1testConfigs,      ./runAllTest            <br>
-to run the client, no script, AFTER BUILD   java ./Main.class       <br>
-<br><br>
+./build.sh      TO BUILD MY APPLICATION
 
-I will include all of the final .class files so don't worry about building the app. If the app fails to run, try re-building it with the build script but it should work. <br>
-Main.class is the compiled entry point for the program and should be treated as the ds-client. <br>
+RUN ALL SCRIPTS FROM THE SRC FILE
 
-usage to mirror ds-client ( ./ds-client -a lrr ) ==> <strong>java Main -a lrr</strong>
+TO RUN THE S2 TESTS, USE s2script.sh
+
+FOR SOME REASON, DS-CLIENT AND MY CLIENT's INTERPRETATION OF NEWLINES DO NOT PLAY ALONG
+IF YOU WANT TO GENERATE A SET OF RESULTS FROM SCRATCH,
+GENERATE THEM USING:
+
+python3 ./s2_test.py "java Main -a ass" -c S2TestConfigs
+
+AND ONCE THEY REACH THE CLIENT, CTRL C AND RUN
+
+python3 ./s2_test.py "java Main -a ass" -n -c S2TestConfigs -r results/ref_results.json
+
+WHERE THE -r FLAG POINTS TO THE RESULTS YOU JUST GENERATED
+
+THANK YOU SORRY FOR THE MESS BUT THERE ARE ALOT OF ASSIGNMENTS DUE
+

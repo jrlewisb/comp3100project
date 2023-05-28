@@ -8,3 +8,5 @@ p.txt
 .DS_Store
 .png
 .jpg
+/master/*
+old_results
