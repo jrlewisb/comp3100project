@@ -128,9 +128,7 @@ public class Session
 
     }
     
-    public class FFQManager extends SchedulingManager {
-        private Queue<Job> jobQueue = new LinkedList<Job>();
-        
+    public class FFQManager extends SchedulingManager {        
         Server getNextServer(Job job) throws Exception {
             for (Server s : this.servers) {
                 if (!s.state.strip().equalsIgnoreCase("inactive")) {
@@ -162,28 +160,16 @@ public class Session
             if (nextServer != null) {
                 sendSCHD(job, nextServer);
             } else {
-                jobQueue.offer(job);
+                ENQJ();
             }
 
         }
         
-        void checkQueue() throws Exception {
-        while (!jobQueue.isEmpty()) {
-            Job job = jobQueue.peek();
-            Server server = getNextServer(job);
-            if (server != null) {
-                sendSCHD(job, server);
-                jobQueue.poll(); // remove queued job
-            } else {
-                break; //if queue head cannot be scheduled , break
-            }
-        }
-    }
+      
+    
     }
     
     public class BFQManager extends SchedulingManager {
-        private Queue<Job> jobQueue = new LinkedList<Job>();
-        
         Server getNextServer(Job job) throws Exception {
             Server bestServer = null;
             for (int i = 0; i < this.servers.length; i++)
@@ -219,41 +205,58 @@ public class Session
             if (nextServer != null) {
                 sendSCHD(job, nextServer);
             } else {
-                jobQueue.offer(job);
+                ENQJ();
             }
         }
         
-        void checkQueue() throws Exception {
-        while (!jobQueue.isEmpty()) {
-            Job job = jobQueue.peek();
-            Server server = getNextServer(job);
-            if (server != null) {
-                sendSCHD(job, server);
-                jobQueue.poll(); // this is copy paste so lets move this code into a QueueSchedulingManager impl. and define it there
-            } else {
-                break; 
-            }
-        }
-    }
+    
     }
     
-    public class WFQManager extends SchedulingManager
-    {
-        Server getNextServer(Job job) {
-            return this.servers[0];
-        }
+    public class WFQManager extends SchedulingManager {
 
-        void schedule(Job job) throws Exception
-        {
-            writeln("GETS Capable " + job.requirements());
-            String[] serversRaw = handleData(in.readLine());
-            if(responseEqual("."))
-            {
-                this.servers = makeServerArray(serversRaw);
-                sendSCHD(job, getNextServer(job));
+    Server getNextServer(Job job) throws Exception {
+        Server worstServer = null;
+        for (int i = 0; i < this.servers.length; i++) {
+            Server s = this.servers[i];
+            if (!s.state.strip().equalsIgnoreCase("inactive")) {
+                if (s.waitingJobs > 0) {
+                    Vector<Job> jobsOnServer = LSTJ(s);
+                }
+            }
+
+            if (job.coresReq > s.cores) {
+                continue;
+            } else if (job.coresReq == s.cores && job.memoryReq > s.memory) {
+                continue;
+            }
+
+            if (worstServer == null) {
+                worstServer = s;
+            }
+            if (s.cores > worstServer.cores) {
+                if (s.cores == worstServer.cores) {
+                    continue;
+                }
+                worstServer = s;
             }
         }
+        return worstServer;
     }
+
+    void schedule(Job job) throws Exception {
+        writeln("GETS Capable " + job.requirements());
+        String[] serversRaw = handleData(in.readLine());
+        this.servers = makeServerArray(serversRaw);
+        Server nextServer = getNextServer(job);
+        if (nextServer != null) {
+            sendSCHD(job, nextServer);
+        } else {
+            ENQJ();
+            return;
+        }
+    }
+}
+
     
     public class AssignmentManager extends SchedulingManager {
         int capacity;
@@ -319,7 +322,7 @@ public class Session
                 this.schedulingManager = new BFQManager();
                 break;
             case "wfq":
-                this.schedulingManager = new BFQManager();
+                this.schedulingManager = new WFQManager();
                 break;
         }
         
@@ -468,6 +471,21 @@ public class Session
         return;
     }
 
+    void handleCHKQ(EventData e) throws Exception
+    {
+        writeln("DEQJ GQ 0");
+        if (!responseEqual("OK")) {
+            throw new Exception();
+        }
+        return;
+    }
+
+    void handleJOBP(EventData e) throws Exception
+    {
+        //just adding here in case we want to do some more advanced de-queuing but for now lets just send it to JOBN
+        handleJOBN(e);
+    }
+
     Vector<Job> LSTJ(Server server) throws Exception
     {
         writeln("LSTJ " + server.type + " " + server.id);
@@ -492,6 +510,10 @@ public class Session
         return jobsVector;
     }
 
+    void ENQJ() throws Exception {
+        writeln("ENQJ GQ");        
+    }
+
     public void handleEvent(String s) throws Exception
     {
         EventData e = new EventData(s);
@@ -499,11 +521,11 @@ public class Session
         switch(e.type)
         {
             case "JOBN": handleJOBN(e); break;
-            case "JOBP": break; //handleJOBP(e); break;
+            case "JOBP": handleJOBP(e); //handleJOBP(e); break;
             case "JCPL": handleJCPL(e); break;
             case "RESF": //handleRESF(e); break;
             case "RESR": //handleRESR(e); break;
-            case "CHKQ": //handleCHKQ(e); break;
+            case "CHKQ": handleCHKQ(e); break;
             case "NONE": //not needed
         }
         writeln("REDY");
