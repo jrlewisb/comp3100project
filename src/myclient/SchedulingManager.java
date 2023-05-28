@@ -6,7 +6,5 @@ abstract class SchedulingManager
     abstract Server getNextServer(Job job) throws Exception;
 
     abstract void schedule(Job job) throws Exception;
-    
-    abstract void handleCHKQ() throws Exception;
 
 }

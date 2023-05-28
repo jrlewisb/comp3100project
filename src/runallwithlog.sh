@@ -1,16 +1,16 @@
 algo=$1
 client=$2
 output=$3
+config=$4
 
 if [ "$client" = "ds-client" ]; then
-    gnome-terminal -- bash -c "./ds-server -c sample-config01.xml -v all > $output; exec bash"&
-    sleep 3
-    ./ds-client -a $algo
-    sleep 3
+    gnome-terminal -- bash -c "./ds-server -c $config -v brief > $output; exec bash"&
+    sleep 2
+    ./ds-client -a $algo& 
+    sleep 2
 else
-    ./build.sh
-    gnome-terminal -- bash -c "./ds-server -n -c sample-config01.xml -v all > $output; exec bash"&
-    sleep 3
-    java Main -a $algo
-    sleep 3
+    gnome-terminal -- bash -c "./ds-server -n -c $config -v brief > $output; exec bash"&
+    sleep 2
+    java Main -a $algo& 
+    sleep 2
 fi

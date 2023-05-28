@@ -9,14 +9,16 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class Session {
-    private boolean debug = true; //set to true to see debug output
+    private boolean debug = true; // set to true to see debug output
     BufferedReader in;
     DataOutputStream out;
     Socket sock;
     SchedulingManager schedulingManager;
 
     public class LRRManager extends SchedulingManager {
-        //Stateful member variables that we require for our algorithm - these should only be accessed from within the algorithm and we provide a generic interface to the session
+        // Stateful member variables that we require for our algorithm - these should
+        // only be accessed from within the algorithm and we provide a generic interface
+        // to the session
         int robinNumber = 0;
         String largestType;
 
@@ -38,16 +40,13 @@ public class Session {
             String[] serversRaw = handleData(in.readLine());
             if (responseEqual(".")) {
                 if (this.servers == null) {
-                    this.servers = sortServers(serversRaw); //sort the servers
-                    this.largestType = this.servers[0].type; //assign the largest type
+                    this.servers = sortServers(serversRaw); // sort the servers
+                    this.largestType = this.servers[0].type; // assign the largest type
                 }
                 sendSCHD(job, getNextServer(job));
             }
         }
 
-        void handleCHKQ() throws Exception {
-            return;
-        }
     }
 
     public class FFManager extends SchedulingManager {
@@ -84,9 +83,6 @@ public class Session {
 
         }
 
-        void handleCHKQ() throws Exception {
-            return;
-        }
     }
 
     public class BFManager extends SchedulingManager {
@@ -124,10 +120,6 @@ public class Session {
             this.servers = makeServerArray(serversRaw);
             sendSCHD(job, getNextServer(job));
 
-        }
-
-        void handleCHKQ() throws Exception {
-            return;
         }
 
     }
@@ -169,14 +161,6 @@ public class Session {
 
         }
 
-        void handleCHKQ() throws Exception {
-
-            writeln("DEQJ GQ 0");
-            if (!responseEqual("OK")) {
-                throw new Exception();
-            }
-            return;
-        }
     }
 
     public class BFQManager extends SchedulingManager {
@@ -218,14 +202,6 @@ public class Session {
             }
         }
 
-        void handleCHKQ() throws Exception {
-
-            writeln("DEQJ GQ 0");
-            if (!responseEqual("OK")) {
-                throw new Exception();
-            }
-            return;
-        }
     }
 
     public class WFQManager extends SchedulingManager {
@@ -272,99 +248,65 @@ public class Session {
             }
         }
 
-        void handleCHKQ() throws Exception {
-
-            writeln("DEQJ GQ 0");
-            if (!responseEqual("OK")) {
-                throw new Exception();
-            }
-            return;
-        }
     }
 
-    public class SJNManager extends SchedulingManager {
-        //Pass through and enqueue all jobs
-        //Once this we reach CHKQ, use the schedulingManager to schedule the jobs.
-        //Maintain a copy of the queue with pairs for estRunTime, JobID, Job
+    public class BFLWTManager extends SchedulingManager {
+        // Best Fit x Lowest Wait Time Manager
+        // Best fit, once there is no available space for execution we queue on the
+        // lowest wait time
         boolean isCheckQueueCalled = false;
         int queueSubmitCounter = 0;
 
-        //use a priority queue that queues based on runtime to keep queue sorted
+        // use a priority queue that queues based on runtime to keep queue sorted
         private PriorityQueue<QueuedJob> jobsQueue = new PriorityQueue<QueuedJob>();
 
         void enqueue(Job job) throws Exception {
-            jobsQueue.add(new QueuedJob(job,queueSubmitCounter++));
+            jobsQueue.add(new QueuedJob(job, queueSubmitCounter++));
             ENQJ();
         }
 
         Server getNextServer(Job job) throws Exception {
-    // IF available server (ie; a server can fit the job),
-    // use best fit,
-    // IF no available server,
-    // use lowest wait time
-    writeln("GETS Capable " + job.requirements());
-    String[] serversRaw = handleData(in.readLine());
-    this.servers = makeServerArray(serversRaw);
-    Server bestServer = null;
-    Server serverWithLowestWaitTime = null;
-    int lowestWaitTime = Integer.MAX_VALUE;
-    for (int i = 0; i < this.servers.length; i++) {
-        Server s = this.servers[i];
+            // IF available server (ie; a server can fit the job),
+            // use best fit,
+            // IF no available server,
+            // use lowest wait time
+            writeln("GETS Capable " + job.requirements());
+            String[] serversRaw = handleData(in.readLine());
+            this.servers = makeServerArray(serversRaw);
+            Server bestServer = null;
+            Server serverWithLowestWaitTime = null;
+            int lowestWaitTime = Integer.MAX_VALUE;
+            for (int i = 0; i < this.servers.length; i++) {
+                Server s = this.servers[i];
 
-        if (job.coresReq > s.cores || (job.coresReq == s.cores && job.memoryReq > s.memory)) {
-            writeln("EJWT " + s.type + " " + s.id);
-            int waitTime = Integer.valueOf(in.readLine());
-            if (waitTime < lowestWaitTime) {
-                serverWithLowestWaitTime = s;
-                lowestWaitTime = waitTime;
-            }
-            continue;
-        }
+                if (job.coresReq > s.cores || (job.coresReq == s.cores && job.memoryReq > s.memory)) {
+                    writeln("EJWT " + s.type + " " + s.id);
+                    int waitTime = Integer.valueOf(in.readLine());
+                    if (waitTime < lowestWaitTime) {
+                        serverWithLowestWaitTime = s;
+                        lowestWaitTime = waitTime;
+                    }
+                    continue;
+                }
 
-        // Check if bestServer is null or current server has fewer remaining cores after job allocation
-        if (bestServer == null || (s.cores - job.coresReq) < (bestServer.cores - job.coresReq)) {
-            bestServer = s;
-        }
-    }
-
-    if (bestServer == null) {
-        return serverWithLowestWaitTime;
-    } else {
-        return bestServer;
-    }
-}
-
-
-        void schedule(Job job) throws Exception {
-            // if (!this.isCheckQueueCalled) {
-            //     enqueue(job);
-            // } else {
-
-            //     Server nextServer = getNextServer(job);
-            //     sendSCHD(job, nextServer);
-            // }
-                Server nextServer = getNextServer(job);
-                sendSCHD(job, nextServer);
-        }
-
-        void handleCHKQ() throws Exception {
-            this.isCheckQueueCalled = true;
-
-            //find lowest runtime job in our queue
-            QueuedJob nextJob = jobsQueue.poll();
-            for (QueuedJob qj : jobsQueue) {
-                if (qj.queuePos > nextJob.queuePos) {
-                    qj.queuePos--;
+                // Check if bestServer is null or current server has fewer remaining cores after
+                // job allocation
+                if (bestServer == null || (s.cores - job.coresReq) < (bestServer.cores - job.coresReq)) {
+                    bestServer = s;
                 }
             }
 
-            writeln("DEQJ GQ " + nextJob.queuePos);
-            if (!responseEqual("OK")) {
-                throw new Exception();
+            if (bestServer == null) {
+                return serverWithLowestWaitTime;
+            } else {
+                return bestServer;
             }
-            return;
         }
 
+        void schedule(Job job) throws Exception {
+            Server nextServer = getNextServer(job);
+            sendSCHD(job, nextServer);
+        }
 
     }
 
@@ -378,7 +320,8 @@ public class Session {
             System.out.println(e);
         }
 
-        //if our session was successfully started, lets instanciate our schedulingManager
+        // if our session was successfully started, lets instanciate our
+        // schedulingManager
         switch (algorithm) {
             case "lrr":
                 this.schedulingManager = new LRRManager();
@@ -399,25 +342,25 @@ public class Session {
                 this.schedulingManager = new WFQManager();
                 break;
             case "ass":
-                this.schedulingManager = new SJNManager();
+                this.schedulingManager = new BFLWTManager();
                 break;
         }
 
     }
 
     public void print(String s) {
-        System.out.println(s);
+        // System.out.println(s);
     }
 
     public void debugln(String s) {
         if (this.debug) {
-            System.out.println(s);
+            // System.out.println(s);
         }
     }
 
     public void debug(String s) {
         if (this.debug) {
-            System.out.print(s);
+            // System.out.print(s);
         }
     }
 
@@ -470,13 +413,13 @@ public class Session {
         }
         int amtLines = Integer.valueOf(headerData[1]);
         int amtBytes = Integer.valueOf(headerData[2]);
-        //prepare to read
+        // prepare to read
         writeln("OK");
         String[] lines = new String[amtLines];
         for (int i = 0; i < amtLines; i++) {
             lines[i] = in.readLine();
         }
-        //after all data recieved
+        // after all data recieved
         writeln("OK");
         for (String l : lines) {
             debugln(l);
@@ -495,7 +438,7 @@ public class Session {
         debugln(job.type);
         for (String s : e.tokens) {
             debug(s + ", ");
-        } //debug
+        } // debug
         debugln("\n");
         schedulingManager.schedule(job);
         if (!responseEqual("OK")) {
@@ -512,7 +455,7 @@ public class Session {
         }
 
         return servers;
-        //end sort servers
+        // end sort servers
     }
 
     Server[] sortServers(String[] rawServers) {
@@ -522,18 +465,24 @@ public class Session {
     }
 
     void handleJCPL(EventData e) throws Exception {
-        //job completion
-        //should just continue?
+        // job completion
+        // should just continue?
         //
         return;
     }
 
     void handleCHKQ(EventData e) throws Exception {
-        schedulingManager.handleCHKQ();
+
+        writeln("DEQJ GQ 0");
+        if (!responseEqual("OK")) {
+            throw new Exception();
+        }
+        return;
     }
 
     void handleJOBP(EventData e) throws Exception {
-        //just adding here in case we want to do some more advanced de-queuing but for now lets just send it to JOBN
+        // just adding here in case we want to do some more advanced de-queuing but for
+        // now lets just send it to JOBN
         handleJOBN(e);
     }
 
@@ -572,31 +521,31 @@ public class Session {
                 handleJOBN(e);
                 break;
             case "JOBP":
-                handleJOBP(e); //handleJOBP(e); break;
+                handleJOBP(e); // handleJOBP(e); break;
             case "JCPL":
                 handleJCPL(e);
                 break;
-            case "RESF": //handleRESF(e); break;
-            case "RESR": //handleRESR(e); break;
+            case "RESF": // handleRESF(e); break;
+            case "RESR": // handleRESR(e); break;
             case "CHKQ":
                 handleCHKQ(e);
                 break;
-            case "NONE": //not needed
+            case "NONE": // not needed
         }
         writeln("REDY");
     }
 
     public void start() throws Exception {
-        if (makeConnection() == true) //if successful connection
+        if (makeConnection() == true) // if successful connection
         {
-            writeln("REDY"); //let the server know we are ready to begin the event loop
+            writeln("REDY"); // let the server know we are ready to begin the event loop
             String event;
             while (!(event = in.readLine()).equals("NONE")) {
                 debugln(event);
                 handleEvent(event);
             }
             writeln("QUIT");
-            //out.close();
+            // out.close();
             if (responseEqual("QUIT")) {
                 in.close();
             }
