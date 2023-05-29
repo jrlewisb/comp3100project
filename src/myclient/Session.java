@@ -254,16 +254,6 @@ public class Session {
         // Best Fit x Lowest Wait Time Manager
         // Best fit, once there is no available space for execution we queue on the
         // lowest wait time
-        boolean isCheckQueueCalled = false;
-        int queueSubmitCounter = 0;
-
-        // use a priority queue that queues based on runtime to keep queue sorted
-        private PriorityQueue<QueuedJob> jobsQueue = new PriorityQueue<QueuedJob>();
-
-        void enqueue(Job job) throws Exception {
-            jobsQueue.add(new QueuedJob(job, queueSubmitCounter++));
-            ENQJ();
-        }
 
         Server getNextServer(Job job) throws Exception {
             // IF available server (ie; a server can fit the job),
